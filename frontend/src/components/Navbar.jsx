@@ -7,10 +7,10 @@ const Navbar = () => {
     const [visible,setVisible] = useState(false)
 
     return (
-        <div className='flex items-center justify-between py-5 font-medium'>
+        <div className='flex items-center justify-between  py-5 font-medium'>
 
             <Link to='/'>
-                <img src={assets.logo} alt="" className='w-36' />
+                <img src={assets.logo} alt="" className='sm:w-32 w-36' />
             </Link>
 
             <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
@@ -55,9 +55,9 @@ const Navbar = () => {
             {/* Sidebar menu for small screen */}
             <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ?'w-full' : 'w-0'}`}>
                 <div className='flex flex-col text-gray-600'>
-                    <div onClick={()=>setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
-                        <img src={assets.dropdown_icon} className='h-4 rotate-180' alt="" />
-                        <p>Back</p>
+                    <div onClick={()=>setVisible(false)} className='flex items-center justify-center gap-2 p-3 cursor-pointer'>
+                        <img src={assets.dropdown_icon} className='h-[15px] rotate-180' alt="" />
+                        <p className='font-medium text-lg'>Back</p>
                     </div>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/'>HOME</NavLink>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border' to='/collection'>COLLECTION</NavLink>
