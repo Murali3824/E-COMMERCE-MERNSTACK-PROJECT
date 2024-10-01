@@ -11,8 +11,8 @@ const ProductItem = ({id,image,name,price}) => {
             <div className='overflow-hidden '>
                 <img className='' src={image[0]} alt="" />
             </div>
-            <p className='pt-3 pb-1 text-sm font-medium'>{name}</p>
-            <p className='text-sm font-semibold'>{currency}{price}</p>
+            <p className='pt-3 pb-1 text-sm font-normal'>{name}</p>
+            <p className='text-sm font-medium'>{currency}{price}</p>
         </Link>
     );
 };

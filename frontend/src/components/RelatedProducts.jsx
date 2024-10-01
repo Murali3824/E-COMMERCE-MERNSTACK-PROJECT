@@ -4,29 +4,31 @@ import Title from './Title';
 import { useState } from 'react';
 import ProductItem from './ProductItem';
 
-const LatestCollections = () => {
-
+const RelatedProducts = ({category,subCategory}) => {
+    
     const {products} = useContext(ShopContext);
-    // console.log(products);
-
-    const [latestProducts,setLatestProducts] = useState([])
+    const [relatedProducts,setRelatedProducts] = useState([]);
 
     useEffect( () => {
-        setLatestProducts(products.slice(0,10));
+        if (products.length > 0) {
+
+            let productsCopy = products.slice();
+            productsCopy = productsCopy.filter((item) => category === item.category);
+            productsCopy = productsCopy.filter((item) => subCategory === item.subCategory);
+            // console.log(productsCopy.slice(0,5));
+            setRelatedProducts(productsCopy.slice(0,5));
+        }
     },[products])
 
     return (
-        <div className='my-10'>
-            <div className='flex flex-col items-center text-center py-8 text-3xl'>
-                <Title text1={'LATEST'} text2={'COLLECTIONS'}/>
-                <p className='w-3/4 mt-1 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas repellat
-                </p>
+        <div className='my-24'>
+            <div className='text-center py-8 text-3xl'>
+                <Title text1={'RELATED'} text2={'PRODUCTS'}/>
             </div>
             {/* Rendering Products */}
             <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
                 {
-                    latestProducts.map((item,index)=>(
+                    relatedProducts.map((item,index)=>(
                         <ProductItem
                             key={index}
                             id={item._id}
@@ -38,7 +40,8 @@ const LatestCollections = () => {
                 }
             </div>
         </div>
+        
     );
 };
 
-export default LatestCollections;
+export default RelatedProducts;
