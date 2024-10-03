@@ -1,17 +1,26 @@
 import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { Link } from 'react-router-dom';
+import { assets } from '../assets/assets';
 
 const ProductItem = ({id,image,name,price}) => {
 
     const {currency} = useContext(ShopContext);
 
     return (
-        <Link className='text-gray-700 cursor-pointer hover:scale-105 ease-in-out duration-300' to={`/product/${id}`}>
+        <Link className=' w-[300px] md:w-auto px-2 py-2 border border-[#cce7d0]  text-gray-700 cursor-pointer transition-shadow  hover:shadow-[20px_20px_30px_rgba(0,0,0,0.1)]  duration-300' to={`/product/${id}`}>
             <div className='overflow-hidden '>
                 <img className='' src={image[0]} alt="" />
             </div>
-            <p className='pt-3 pb-1 text-sm font-normal'>{name}</p>
+            <div className='flex items-center gap-1 mt-2 '>
+                        <img src={assets.star_icon} alt="" className='w-3.5' />
+                        <img src={assets.star_icon} alt="" className='w-3.5' />
+                        <img src={assets.star_icon} alt="" className='w-3.5' />
+                        <img src={assets.star_icon} alt="" className='w-3.5' />
+                        <img src={assets.star_dull_icon} alt="" className='w-3.5' />
+                        <p className='text-xs'>(3817)</p>
+            </div>
+            <p className='pt-3 pb-1 lg:text-xs text-sm text-balance font-normal'>{name}</p>
             <p className='text-sm font-medium'>{currency}{price}</p>
         </Link>
     );

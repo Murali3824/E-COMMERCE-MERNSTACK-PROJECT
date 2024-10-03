@@ -1,8 +1,10 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import LatestCollections from '../components/LatestCollections';
+import Discount from '../components/Discount';
 import BestSeller from '../components/BestSeller';
-import OurPolicy from '../components/OurPolicy';
+import Features from '../components/Features';
+import Offers from '../components/Offers';
 import NewsetterBox from '../components/NewsetterBox';
 
 const Home = () => {
@@ -10,8 +12,10 @@ const Home = () => {
         <div>
             <Hero/>
             <LatestCollections/>
+            <Discount/>
             <BestSeller/>
-            <OurPolicy/>
+            <Features/>
+            <Offers/>
             <NewsetterBox/>
         </div>
     );

@@ -11,6 +11,10 @@ a.active hr{
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1280px ;
 }
 
 ::-webkit-scrollbar{
@@ -19,7 +23,7 @@ a.active hr{
 
 @media (max-width:640px) {
     a.active{
-        background-color: black;
+        background-color: #088178;
         color: white;
     }
 }

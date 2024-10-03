@@ -12,7 +12,7 @@ const SearchBar = () => {
     const location = useLocation();
     useEffect(()=>{
         // console.log(location.pathname);
-        if (location.pathname.includes('collection')) {
+        if (location.pathname.includes('shop')) {
             setVisible(true);
         }
         else{
@@ -26,7 +26,7 @@ const SearchBar = () => {
                 <input value={search} onChange={(e)=>setSearch(e.target.value)} className='flex-1 outline-none bg-inherit text-sm ' type="text" placeholder='Search' />
                 <img className='w-4' src={assets.search_icon} alt="" />
             </div>
-            <img onClick={()=>setShowSearch(false)} className='inline w-3 cursor-pointer' src={assets.cross_icon} alt="" />
+            <img onClick={()=>setShowSearch(false)} className='inline w-4 cursor-pointer' src={assets.cross_icon} alt="" />
         </div>
     ): null
 };

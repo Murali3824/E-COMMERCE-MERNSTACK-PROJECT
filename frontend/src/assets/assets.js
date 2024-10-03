@@ -73,6 +73,34 @@ import contact_img from './contact_img.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
+import hero4_img from './hero4.png'
+import f1_img from './f1.png'
+import f2_img from './f2.png'
+import f3_img from './f3.png'
+import f4_img from './f4.png'
+import f5_img from './f5.png'
+import f6_img from './f6.png'
+import ecom_logo from './ecomlogo.jpg'
+import button_bg from './button.png'
+import banner_img from './banner.png'
+import banner2_img from './banner2.jpg'
+import banner3_img from './banner3.jpg'
+import a6_img from './a6.jpg'
+import b1_img from './b1.jpg'
+import b2_img from './b2.jpg'
+import b3_img from './b3.jpg'
+import b4_img from './b4.jpg'
+import b4_1_img from './b4.1.jpg'
+import b7_img from './b7.jpg'
+import b7_1_img from './b7.1.jpg'
+import b7_2_img from './b7.2.jpg'
+import b9_img from './b9.jpg'
+import b17_img from './b17.jpg'
+import b18_img from './b18.jpg'
+
+
+
+
 
 export const assets = {
     logo,
@@ -92,7 +120,31 @@ export const assets = {
     contact_img,
     razorpay_logo,
     stripe_logo,
-    cross_icon
+    cross_icon,
+    hero4_img,
+    f1_img,
+    f2_img,
+    f3_img,
+    f4_img,
+    f5_img,
+    f6_img,
+    ecom_logo,
+    button_bg,
+    banner_img,
+    banner2_img,
+    banner3_img,
+    a6_img,
+    b1_img,
+    b2_img,
+    b3_img,
+    b4_img,
+    b4_1_img,
+    b7_img,
+    b9_img,
+    b7_1_img,
+    b7_2_img,
+    b17_img,
+    b18_img,
 }
 
 export const products = [

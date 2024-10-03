@@ -17,13 +17,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
-    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:[9vw]'>
+    <div className='px-4 sm:px-0 md:px-0 lg:px-0'>
       <ToastContainer/>
       <Navbar/>
       <SearchBar/>
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/collection' element={<Collection/>}/>
+        <Route path='/shop' element={<Collection/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/product/:productId' element={<Product/>}/>

@@ -8,29 +8,31 @@ const Navbar = () => {
     const [visible,setVisible] = useState(false)
     const {setShowSearch,getCartCount} = useContext(ShopContext)
 
-    return (
-        <div className='flex items-center justify-between  py-5 font-medium'>
+    
 
-            <Link to='/'>
-                <img src={assets.logo} alt="" className='sm:w-32 w-36' />
+    return (
+        <div className='mb-4 px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] flex items-center justify-between  py-5 font-medium'>
+
+            <Link className='' to='/'>
+                <img src={assets.ecom_logo} alt="" className=' w-[50px] h-[26px] sm:w-[60px] sm:h-[30px] lg:h-auto lg:w-[75px] ' />
             </Link>
 
-            <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
+            <ul className='hidden sm:flex gap-8 text-base text-[#222]'>
                 <NavLink to='/' className='flex flex-col items-center gap-1'>
-                    <p>HOME</p>
-                    <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
+                    <p className='font-medium md:text-lg '>Home</p>
+                    <hr className='w-[100%] border-none h-[1.5px] bg-[#088178] hidden' />
                 </NavLink>
-                <NavLink to='/collection' className='flex flex-col items-center gap-1'>
-                    <p>COLLECTION</p>
-                    <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
+                <NavLink to='/shop' className='flex flex-col items-center gap-1'>
+                    <p className='font-medium md:text-lg'>Shop</p>
+                    <hr className='w-[100%] border-none h-[1.5px] bg-[#088178] hidden' />
                 </NavLink>
                 <NavLink to='/about' className='flex flex-col items-center gap-1'>
-                    <p>ABOUT</p>
-                    <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
+                    <p className='font-medium md:text-lg'>About</p>
+                    <hr className='w-[100%] border-none h-[1.5px] bg-[#088178] hidden' />
                 </NavLink>
                 <NavLink to='/contact' className='flex flex-col items-center gap-1'>
-                    <p>CONTACT</p>
-                    <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden' />
+                    <p className='font-medium md:text-lg'>Contact</p>
+                    <hr className='w-[100%] border-none h-[1.5px] bg-[#088178] hidden' />
                 </NavLink>
             </ul>
 
@@ -59,16 +61,15 @@ const Navbar = () => {
             </div>
 
             {/* Sidebar menu for small screen */}
-            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ?'w-full' : 'w-0'}`}>
-                <div className='flex flex-col text-gray-600'>
-                    <div onClick={()=>setVisible(false)} className='flex items-center justify-center gap-2 p-3 cursor-pointer'>
-                        <img src={assets.dropdown_icon} className='h-[15px] rotate-180' alt="" />
-                        <p className='font-medium text-lg'>Back</p>
+            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all duration-300 ${visible ?'w-[85%]' : 'w-0'}`}>
+                <div className='flex flex-col text-[#222]'>
+                    <div onClick={()=>setVisible(false)} className='ml-6  gap-2 p-3 cursor-pointer'>
+                        <img src={assets.cross_icon} className=' w-[12px]' alt="" />
                     </div>
-                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border ' to='/'>HOME</NavLink>
-                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border ' to='/collection'>COLLECTION</NavLink>
-                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border ' to='/about'>ABOUT</NavLink>
-                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border ' to='/contact'>CONTACT</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/'>HOME</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/collection'>COLLECTION</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/about'>ABOUT</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/contact'>CONTACT</NavLink>
                 </div>
             </div>
 
