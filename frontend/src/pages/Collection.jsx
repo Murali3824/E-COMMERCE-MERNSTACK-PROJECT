@@ -85,7 +85,7 @@ const Collection = () => {
         <div>
             <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner2_img})` }}>
                     <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#stayHOME</p>
-                    <p className='text-white text-[14px] md:text-[16px] p-1 text-nowrap'>Save more money with coupons & up to 70% off!</p>
+                    <p className='text-white text-[14px] md:text-[16px] p-1 text-wrap'>Save more money with coupons & up to 70% off!</p>
             </div>
             <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
 
@@ -137,7 +137,7 @@ const Collection = () => {
                     <div className='flex justify-between text-2xl sm:text-3xl mb-4'>
                         <Title text1={'All'} text2={'COLLECTIONS'} />
                         {/* Product Sort  */}
-                        <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm p-1 w-[100px]'>
+                        <select onChange={(e)=>setSortType(e.target.value)} className='border-2 border-gray-300 text-sm h-[30px] sm:h-auto p-1 w-[110px]'>
                             <option value="relavent">Relavent</option>
                             <option value="low-high">Low to High</option>
                             <option value="high-low">High to Low</option>

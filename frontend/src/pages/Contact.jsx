@@ -8,7 +8,7 @@ const Contact = () => {
         <div>
             <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner3_img})` }}>
                     <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#let's_TALK</p>
-                    <p className='text-white text-[14px] md:text-[16px] p-1 text-nowrap'>LEAVE A MESSAGE, We Love To Hear Form You!</p>
+                    <p className='text-white text-[14px] md:text-[16px] p-1 text-wrap'>LEAVE A MESSAGE, We Love To Hear Form You!</p>
             </div>
             <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] text-2xl sm:text-3xl text-center pt-10 border-t'>
                 <Title text1={'Contact'} text2={'US'}/>

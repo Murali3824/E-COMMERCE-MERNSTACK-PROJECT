@@ -67,7 +67,7 @@ const Navbar = () => {
                         <img src={assets.cross_icon} className=' w-[12px]' alt="" />
                     </div>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/'>HOME</NavLink>
-                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/collection'>COLLECTION</NavLink>
+                    <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/shop'>SHOP</NavLink>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/about'>ABOUT</NavLink>
                     <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 ' to='/contact'>CONTACT</NavLink>
                 </div>

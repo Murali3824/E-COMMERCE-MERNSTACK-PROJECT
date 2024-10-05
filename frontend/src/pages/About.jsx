@@ -8,7 +8,7 @@ const About = () => {
         <div>
             <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner_img})` }}>
                 <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#KnowUS</p>
-                <p className='text-white text-[14px] md:text-[16px] p-1 text-nowrap'>positive feelings about the ecommerce brand</p>
+                <p className='text-white text-[14px] md:text-[16px] p-1 text-wrap'>positive feelings about the ecommerce brand</p>
             </div>
             <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw]'>
             
