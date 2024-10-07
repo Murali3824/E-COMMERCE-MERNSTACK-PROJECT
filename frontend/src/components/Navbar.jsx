@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return (
         <div className='mb-4 px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] flex items-center justify-between  py-5 font-medium'>
-
+            
             <Link className='' to='/'>
                 <img src={assets.ecom_logo} alt="" className=' w-[50px] h-[26px] sm:w-[60px] sm:h-[30px] lg:h-auto lg:w-[75px] ' />
             </Link>
