@@ -75,14 +75,15 @@ const Product = () => {
                 </div>
             </div>
 
+            {/* Policy Section  */}
+                                    
+            <OurPolicy/>
+
             {/* Display related products  */}
 
             <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
 
-            {/* Policy Section  */}
             
-            <OurPolicy/>
-
             
 
         </div>

@@ -83,14 +83,14 @@ const Collection = () => {
 
     return (
         <div>
-            <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner2_img})` }}>
+            <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-max-[35vh] sm:h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner2_img})` }}>
                     <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#stayHOME</p>
                     <p className='text-white text-[14px] md:text-[16px] p-1 text-wrap'>Save more money with coupons & up to 70% off!</p>
             </div>
-            <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
+            <div className=' sm:px-[5vw] md:px-[6vw] lg:px-[7vw] flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
 
                 {/* Filter Page */}
-                <div className='min-w-60'>
+                <div className='min-w-60 px-2 sm:px-0'>
                     <p onClick={()=>{setShowFilter(!showFilter)}} className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS
                         <img className={`h-3 sm:hidden ${showFilter ? 'rotate-90' : '' }`} src={assets.dropdown_icon} alt="" />
                     </p>
@@ -133,7 +133,7 @@ const Collection = () => {
                 </div>
 
                 {/* Right side */}
-                <div className='flex-1 '>
+                <div className='flex-1 px-2 sm:px-0 '>
                     <div className='flex justify-between text-2xl sm:text-3xl mb-4'>
                         <Title text1={'All'} text2={'COLLECTIONS'} />
                         {/* Product Sort  */}
@@ -145,7 +145,7 @@ const Collection = () => {
                     </div>
 
                     {/* Map Products  */}
-                    <div className='flex flex-col  justify-center items-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 gap-y-6'>
                     {
                         filterProducts.map((item,index)=>(
                             <ProductItem

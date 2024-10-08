@@ -6,14 +6,14 @@ import NewsetterBox from '../components/NewsetterBox';
 const Contact = () => {
     return (
         <div>
-            <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner3_img})` }}>
+            <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-max-[35vh] sm:h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner3_img})` }}>
                     <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#let's_TALK</p>
                     <p className='text-white text-[14px] md:text-[16px] p-1 text-wrap'>LEAVE A MESSAGE, We Love To Hear Form You!</p>
             </div>
             <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] text-2xl sm:text-3xl text-center pt-10 border-t'>
                 <Title text1={'Contact'} text2={'US'}/>
             </div>
-            <div className='my-10 flex flex-col justify-center md:flex-row gap-10 mb-28'>
+            <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] my-10 flex flex-col justify-center md:flex-row gap-10 mb-28'>
                 <img className='w-full md:max-w-[480px]' src={assets.contact_img} alt="" />
                 <div className='flex flex-col justify-center items-start gap-6'>
                     <b className='font-semibold text-xl text-gray-600'>Our Store</b>
@@ -77,12 +77,6 @@ const Contact = () => {
             <div>
                 <NewsetterBox/>
             </div>
-
-
-
-
-            
-
 
         </div>
     );

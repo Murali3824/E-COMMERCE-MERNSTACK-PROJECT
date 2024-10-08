@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
-    <div className='px-4 sm:px-0 md:px-0 lg:px-0'>
+    <div className=''>
       <ToastContainer/>
       <Navbar/>
       <SearchBar/>

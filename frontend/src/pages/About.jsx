@@ -6,7 +6,7 @@ import NewsetterBox from '../components/NewsetterBox';
 const About = () => {
     return (
         <div>
-            <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner_img})` }}>
+            <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-max-[35vh] sm:h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner_img})` }}>
                 <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#KnowUS</p>
                 <p className='text-white text-[14px] md:text-[16px] p-1 text-wrap'>positive feelings about the ecommerce brand</p>
             </div>
@@ -42,11 +42,14 @@ const About = () => {
                     </div>
 
                 </div>
-                <div className='mt-28'>
-                    <NewsetterBox/>
-                </div>
+                
 
             </div>
+
+            <div>
+                <NewsetterBox/>
+            </div>
+
         </div>
         
     );

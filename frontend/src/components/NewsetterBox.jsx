@@ -7,7 +7,7 @@ const NewsetterBox = () => {
     }
 
     return (
-        <div className='text-center mt-20'>
+        <div className='text-center px-4 sm:px-0 mt-20'>
             <p className='text-2xl font-medium text-gray-800'>Subscribe now & get 20% off</p>
             <p className='text-gray-400 mt-3 '>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, excepturi!

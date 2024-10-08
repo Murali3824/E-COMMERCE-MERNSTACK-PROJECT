@@ -21,12 +21,12 @@ const RelatedProducts = ({category,subCategory}) => {
     },[products])
 
     return (
-        <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] my-24'>
+        <div className='sm:px-[5vw] md:px-[6vw] lg:px-[7vw] my-14'>
             <div className='text-center py-8 text-3xl'>
                 <Title text1={'RELATED'} text2={'PRODUCTS'}/>
             </div>
             {/* Rendering Products */}
-            <div className='flex flex-col justify-center items-center sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 gap-y-6'>
                 {
                     relatedProducts.map((item,index)=>(
                         <ProductItem

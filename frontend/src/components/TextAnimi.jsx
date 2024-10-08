@@ -3,7 +3,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 const TextAnimi = () => {
     return (
-        <TypeAnimation className='text-[#088178] font-medium px-4 text-3xl lg:text-5xl'
+        <TypeAnimation className=' text-[#088178] font-medium px-4 text-4xl lg:text-5xl'
         sequence={[
             // Same substring at the start will only be typed out once, initially
             'Shirts',

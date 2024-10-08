@@ -6,9 +6,9 @@ const Features = () => {
     return (
         <div className='my-10  flex flex-col justify-center items-center'>
             <div className='flex flex-col items-center text-center py-8 text-3xl sm:text-4xl'>
-                <Title text1={'ProvideBy'} text2={'USER'}/>
+                <Title text1={'Provide By'} text2={'USER'}/>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[24px] '>
+            <div className=' grid grid-cols-2  md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 '>
             
                 <div className='w-[180px] text-center p-[25px_0px_25px_15px] border border-[#cce7d0] rounded-[4px] my-[15px] transition-shadow duration-300 hover:shadow-[20px_20px_34px_rgba(0,0,0,0.1)]'>
                     <img src={assets.f1_img} alt="Save money" />
