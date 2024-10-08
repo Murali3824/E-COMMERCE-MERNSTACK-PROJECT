@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken'
 
-// for acces to add & remove products
+// for access to add & remove products
 const adminAuth = async (req,res,next) => {
     try {
         
