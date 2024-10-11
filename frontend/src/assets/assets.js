@@ -91,12 +91,10 @@ import b2_img from './b2.jpg'
 import b3_img from './b3.jpg'
 import b4_img from './b4.jpg'
 import b4_1_img from './b4.2.jpg'
-import b7_img from './b7.jpg'
-import b7_1_img from './b7.1.jpg'
-import b7_2_img from './b7.2.jpg'
 import b9_img from './b9.jpg'
-import b17_img from './b17.jpg'
-import b18_img from './b18.jpg'
+import new_1 from './new1.avif'
+import new_2 from './new2.avif'
+
 
 
 
@@ -139,12 +137,9 @@ export const assets = {
     b3_img,
     b4_img,
     b4_1_img,
-    b7_img,
     b9_img,
-    b7_1_img,
-    b7_2_img,
-    b17_img,
-    b18_img,
+    new_1,
+    new_2
 }
 
 export const products = [
@@ -158,7 +153,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L"],
         date: 1716634345448,
-        bestseller: true
+        bestseller: false
     },
     {
         _id: "aaaab",
@@ -182,7 +177,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "L", "XL"],
         date: 1716234545448,
-        bestseller: true
+        bestseller: false
     },
     {
         _id: "aaaad",
@@ -194,7 +189,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "XXL"],
         date: 1716621345448,
-        bestseller: true
+        bestseller: false
     },
     {
         _id: "aaaae",
@@ -206,7 +201,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["M", "L", "XL"],
         date: 1716622345448,
-        bestseller: true
+        bestseller: false
     },
     {
         _id: "aaaaf",
@@ -218,7 +213,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "L", "XL"],
         date: 1716623423448,
-        bestseller: true
+        bestseller: false
     },
     {
         _id: "aaaag",
@@ -278,7 +273,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L"],
         date: 1716623345448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaal",
@@ -290,7 +285,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716624445448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaam",
@@ -302,7 +297,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716625545448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaan",
@@ -314,7 +309,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716626645448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaao",
@@ -326,7 +321,7 @@ export const products = [
         subCategory: "Bottomwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716627745448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaap",
@@ -338,7 +333,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716628845448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaaq",
@@ -350,7 +345,7 @@ export const products = [
         subCategory: "Bottomwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716629945448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaar",
@@ -362,7 +357,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716631045448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaas",
@@ -374,7 +369,7 @@ export const products = [
         subCategory: "Topwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716632145448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaat",
@@ -386,7 +381,7 @@ export const products = [
         subCategory: "Bottomwear",
         sizes: ["S", "M", "L", "XL"],
         date: 1716633245448,
-        bestseller: false
+        bestseller: true
     },
     {
         _id: "aaaau",

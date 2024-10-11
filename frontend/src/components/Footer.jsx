@@ -27,26 +27,27 @@ const Footer = () => {
                     </div>
                 </div>
                 <div>
-                    <p className='text-xl font-medium mb-5'>About</p>
-                    <ul className='flex flex-col gap-1 text-gray-600'>
-                        <Link to='/about'>About us</Link>
-                        <Link to='/contact'>Contact Us</Link>
-                        <Link to='/orders'>Delivery Information</Link>
-                        <Link to='/contact'>Privacy Policy</Link>
-                        <Link to='/contact'>Terms & Conditions</Link>
+                    <p className='text-xl font-medium mb-2 sm:mb-5'>About</p>
+                    <ul className=' grid grid-cols-2 sm:grid-cols-1 sm:gap-1 text-gray-600'>
+                        <Link className='hover:text-[#088178]' to='/about'>About us</Link>
+                        <Link className='hover:text-[#088178]' to='/contact'>Contact Us</Link>
+                        <Link className='hover:text-[#088178]' to='/orders'>Delivery Information</Link>
+                        <Link className='hover:text-[#088178]' to='/#'>Privacy Policy</Link>
+                        <Link className='hover:text-[#088178]' to='/#'>Terms & Conditions</Link>
+                        <Link className='hover:text-[#088178]' to='/#'>Cancellation Policy</Link>
                     </ul>
                 </div>
                 <div>
-                    <p className='text-xl font-medium mb-5'>My Account</p>
-                    <ul className='flex flex-col gap-1 text-gray-600'>
-                        <Link to='/loginsignup'>Sign In</Link>
-                        <Link to='/cart'>View Cart</Link>
-                        <Link to='/orders'>Track My Order</Link>
-                        <Link to='/contact'>Help</Link>
+                    <p className='text-xl font-medium mb-2 sm:mb-5'>My Account</p>
+                    <ul className='grid grid-cols-2 sm:grid-cols-1 sm:gap-1 text-gray-600'>
+                        <Link className='hover:text-[#088178]' to='/loginsignup'>Sign In</Link>
+                        <Link className='hover:text-[#088178]' to='/cart'>View Cart</Link>
+                        <Link className='hover:text-[#088178]' to='/orders'>Track My Order</Link>
+                        <Link className='hover:text-[#088178]' to='/contact'>Help</Link>
                     </ul>
                 </div>
                 <div>
-                    <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
+                    <p className='text-xl font-medium mb-2 sm:mb-5'>GET IN TOUCH</p>
                     <ul className='flex flex-col gap-1 text-gray-600'>
                         <li>+1-234-567-8901</li>
                         <li>contact@ecommerce.com</li>
@@ -55,7 +56,7 @@ const Footer = () => {
             </div>
             <div className=''>
                 <hr />
-                <p className='py-5 text-sm text-center'>Copyright 2024@ forever.com - All Right Reserved.</p>
+                <p className='py-5 text-sm text-center'>Copyright 2024@ ecommerce.com - All Right Reserved.</p>
             </div>
         </div>
     );

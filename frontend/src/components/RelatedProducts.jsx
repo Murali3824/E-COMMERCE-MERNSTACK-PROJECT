@@ -15,18 +15,18 @@ const RelatedProducts = ({category,subCategory}) => {
             let productsCopy = products.slice();
             productsCopy = productsCopy.filter((item) => category === item.category);
             productsCopy = productsCopy.filter((item) => subCategory === item.subCategory);
-            // console.log(productsCopy.slice(0,5));
+            // console.log(productsCopy.slice(0,4));
             setRelatedProducts(productsCopy.slice(0,4));
         }
     },[products])
 
     return (
-        <div className='sm:px-[5vw] md:px-[6vw] lg:px-[7vw] my-14'>
+        <div className='px-[2vw] sm:px-[5vw] md:px-[6vw] lg:px-[7vw] my-14'>
             <div className='text-center py-8 text-3xl'>
                 <Title text1={'RELATED'} text2={'PRODUCTS'}/>
             </div>
             {/* Rendering Products */}
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 gap-y-6'>
+            <div className='grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 gap-y-6'>
                 {
                     relatedProducts.map((item,index)=>(
                         <ProductItem

@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 
 const Features = () => {
     return (
-        <div className='my-10  flex flex-col justify-center items-center'>
+        <div className='sm:px-[4vw] md:px-[5vw] lg:px-[6vw] my-10  flex flex-col justify-center items-center'>
             <div className='flex flex-col items-center text-center py-8 text-3xl sm:text-4xl'>
                 <Title text1={'Provide By'} text2={'USER'}/>
             </div>

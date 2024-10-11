@@ -6,14 +6,16 @@ import BestSeller from '../components/BestSeller';
 import Features from '../components/Features';
 import Offers from '../components/Offers';
 import NewsetterBox from '../components/NewsetterBox';
+import NewDeals from '../components/NewDeals';
 
 const Home = () => {
     return (
         <div>
             <Hero/>
             <LatestCollections/>
-            <Discount/>
+            <NewDeals/>
             <BestSeller/>
+            <Discount/>
             <Features/>
             <Offers/>
             <NewsetterBox/>

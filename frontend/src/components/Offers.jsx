@@ -3,7 +3,7 @@ import { assets } from '../assets/assets';
 
 const Offers = () => {
     return (
-        <div className=' my-20 flex-col  flex '>
+        <div className='px-[2vw] sm:px-[5vw] md:px-[6vw] lg:px-[7vw] my-20 flex-col  flex '>
             <div className='group flex flex-col justify-center items-start p-3 sm:p-8 bg-cover bg-center ' style={{ backgroundImage: `url(${assets.b9_img})` }}>
                 <h4 className='text-white text-[20px] font-light'>Crazy Deals</h4>
                 <h2 className='text-white text-[28px] font-extrabold'>Buy 2 Get 1 Free</h2>

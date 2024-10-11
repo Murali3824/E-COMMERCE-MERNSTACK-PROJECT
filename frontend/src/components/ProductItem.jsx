@@ -8,7 +8,7 @@ const ProductItem = ({id,image,name,price}) => {
     const {currency} = useContext(ShopContext);
 
     return (
-        <Link className=' md:w-auto sm:px-2 sm:py-2 border border-[#cce7d0]  text-gray-700 cursor-pointer transition-shadow  hover:shadow-[20px_20px_30px_rgba(0,0,0,0.1)]  duration-300' to={`/product/${id}`}>
+        <Link className=' md:w-auto sm:px-2 sm:py-2 border border-[#cce7d0]  text-gray-700 cursor-pointer transform transition ease-in-out duration-300 lg:hover:scale-105 active:scale-95  md:hover:shadow-[20px_20px_30px_rgba(0,0,0,0.1)]' to={`/product/${id}`}>
             <div className='overflow-hidden '>
                 <img className='' src={image[0]} alt="" />
             </div>
