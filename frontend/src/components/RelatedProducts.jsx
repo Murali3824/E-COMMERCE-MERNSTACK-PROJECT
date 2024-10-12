@@ -3,6 +3,8 @@ import { ShopContext } from '../context/ShopContext';
 import Title from './Title';
 import { useState } from 'react';
 import ProductItem from './ProductItem';
+import { Link } from 'react-router-dom';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const RelatedProducts = ({category,subCategory}) => {
     
@@ -38,6 +40,14 @@ const RelatedProducts = ({category,subCategory}) => {
                         />
                     ))
                 }
+            </div>
+            <div className='text-center my-10'>
+                <Link to='/shop' className='group inline-block sm:h-[52px] leading-[49px] bg-[#000000] hover:bg-[#088178] transform transition ease-in-out duration-300 rounded-[2px] px-4 sm:px-7 md:px-9  align-middle text-[#fff] text-sm sm:tracking-[0.75px]  relative overflow-hidden'>
+                    <div className='flex items-center gap-4'>
+                        <span>VIEW ALL PRODUCTS</span>
+                        <FaArrowRightLong className='transform sm:group-hover:translate-x-3 ease-in-out duration-500' />
+                    </div>
+                </Link>
             </div>
         </div>
         
