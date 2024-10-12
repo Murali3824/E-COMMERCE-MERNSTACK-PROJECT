@@ -43,10 +43,10 @@ const Add = ({ token }) => {
 
             if (response.data.success) {
                 toast.success('Product added successfully!');
-                // setName('')
-                // setDescription('')
+                setName('')
+                setDescription('')
                 setPrice('')
-                // setSizes('')
+                setSizes('')
                 setImage1(false)
                 setImage2(false)
                 setImage3(false)
