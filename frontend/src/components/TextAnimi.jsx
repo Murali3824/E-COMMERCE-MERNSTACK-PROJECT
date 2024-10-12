@@ -10,7 +10,7 @@ const TextAnimi = () => {
             1000, // wait 1s before replacing "Mice" with "Hamsters"
             'T-Shirts',
             1000,
-            'Trousers',
+            'Pants',
             1000,
             'Jackets',
             1000

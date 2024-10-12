@@ -13,6 +13,7 @@ const ShopContextProvider = (props) => {
     // backend url
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [products,setProducts] = useState([]);
+    const [token,setToken] = useState('')
 
     const [search,setSearch] = useState('');
     const [showSearch,setShowSearch] = useState(false);
@@ -93,7 +94,7 @@ const ShopContextProvider = (props) => {
         try {
             
             const response = await axios.get(backendUrl + '/api/product/list')
-            console.log(response.data);
+            // console.log(response.data);
             if(response.data.success){
                 setProducts(response.data.products)
             } else {
@@ -109,6 +110,13 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         getProductsData()
     },[])
+    
+    // On page reload, retrieve the token from localStorage to keep the user logged in.
+    useEffect(() => {
+        if (!token && localStorage.getItem('token')) {
+            setToken(localStorage.getItem('token'))
+        }
+    })
 
     const contextValue = {
         products,currency,delivery_fee,
@@ -116,6 +124,7 @@ const ShopContextProvider = (props) => {
         cartItems,addToCart,getCartCount,updateQuantity,getCartAmount,
         navigate,
         backendUrl,
+        setToken,token,
     }
 
     return (
