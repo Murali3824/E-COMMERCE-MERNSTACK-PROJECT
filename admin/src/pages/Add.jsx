@@ -72,7 +72,7 @@ const Add = ({ token }) => {
             <form onSubmit={onSubmitHandler} className='flex flex-col w-full items-start gap-3'>
                 {/* Image upload section */}
                 <div>
-                    <p className='mb-2 font-normal'>Upload Image</p>
+                    <p className='mb-4 font-semibold text-xl'>Upload Image</p>
                     <div className='flex gap-2'>
                         <label htmlFor="image1">
                             <img className='w-20' src={!image1 ? assets.upload_area : URL.createObjectURL(image1)} alt="" />
