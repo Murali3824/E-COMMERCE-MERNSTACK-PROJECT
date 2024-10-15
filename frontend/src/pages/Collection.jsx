@@ -26,7 +26,7 @@ const Collection = () => {
         }
     }
     useEffect(() => {
-        console.log(category);
+        // console.log(category);
     },[category])
 
     const [subCategory,setSubCategory] = useState([]);
@@ -39,7 +39,7 @@ const Collection = () => {
         }
     }
     useEffect(() => {
-        console.log(subCategory);
+        // console.log(subCategory);
     },[subCategory])
 
     const applyFilter = () => {

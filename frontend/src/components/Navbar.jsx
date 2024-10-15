@@ -12,13 +12,14 @@ const Navbar = () => {
         navigate('/loginsignup')
         localStorage.removeItem('token')
         setToken('')
-        setCartItems({})
+        // setCartItems({})
     }
     
 
     return (
         <div className='px-3 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] flex items-center justify-between  py-5 font-medium'>
             
+            {/* Logo and Navigation Links */}
             <Link className='' to='/'>
                 <img src={assets.ecom_logo} alt="" className=' w-[50px] h-[26px] sm:w-[60px] sm:h-[30px] lg:h-auto lg:w-[75px] ' />
             </Link>
@@ -42,6 +43,7 @@ const Navbar = () => {
                 </NavLink>
             </ul>
 
+            {/* Icons and Cart */}
             <div className='flex items-center gap-6'>
                 <Link to="/shop">
                     <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />

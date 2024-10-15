@@ -20,13 +20,14 @@ const ShopContextProvider = (props) => {
     const [cartItems,setCartItems] = useState({});
     const navigate = useNavigate();
 
-    const addToCart = (itemId, size) => {
+    const addToCart = async (itemId, size) => {
+
         if (!size) {
             toast.error('Select Product Size');
             return;
         }
     
-        const cartData = structuredClone(cartItems);
+        const cartData = structuredClone(cartItems || {});
     
         if (cartData[itemId]) {
             if (cartData[itemId][size]) {
@@ -37,13 +38,24 @@ const ShopContextProvider = (props) => {
         } else {
             cartData[itemId] = { [size]: 1 };
         }
-    
         setCartItems(cartData);
         // Displaying success toast notification
-        toast.success('added to cart!');
+        toast.success('Added to cart!');
+
+        if (token) {
+            try {
+                await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } });
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message)
+            }
+        } 
+        // else {
+        //     toast.warning('You are not logged in');
+        // }
+
     };
     
-
     const getCartCount = () => {
         let totalCount = 0;
         for(const items in cartItems){
@@ -60,7 +72,8 @@ const ShopContextProvider = (props) => {
         return totalCount;
     }
     useEffect(() => {
-        console.log(cartItems);
+        // Logging cart items for debug purposes
+        // console.log(cartItems);
     },[cartItems])
 
     const updateQuantity = async (itemId,size,quantity) => {
@@ -68,12 +81,22 @@ const ShopContextProvider = (props) => {
         let cartData =structuredClone(cartItems);
         cartData[itemId][size] = quantity;
         setCartItems(cartData);
+
+        if (token) {
+            try {
+                await axios.post(backendUrl + '/api/cart/update', { itemId, size, quantity}, { headers: { token } });
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message)
+            }
+        }
     }
 
     const getCartAmount =  () => {
         let totalAmount = 0;
         for(const items in cartItems) {
             let itemInfo = products.find((product)=>product._id === items);
+            if (!itemInfo) continue; // Skip if itemInfo is not found
             for(const item in cartItems[items]){
                 try {
                     if(cartItems[items][item] > 0) {
@@ -81,13 +104,28 @@ const ShopContextProvider = (props) => {
                     }
                 } catch (error) {
                     console.log("get ammount error");
-                    
                 }
             }
         }
         return totalAmount;
     }
 
+    // geting user cart details on reloading from backend
+    const getUserCart = async (token) => {
+        try {
+            const response = await axios.post(backendUrl + '/api/cart/get', {}, { headers: { token } });
+            // console.log("User cart response:", response.data);
+            
+            if (response.data.success) {
+                setCartItems(response.data.cartData); // Update this line
+            } else {
+                toast.error('Failed to fetch cart data');
+            }
+        } catch (error) {
+            console.error("Error fetching cart data:", error);
+            toast.error(error.message);
+        }
+    };
 
     // getting product data from backend admin
     const getProductsData = async () => {
@@ -110,14 +148,24 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         getProductsData()
     },[])
-    
-    // On page reload, retrieve the token from localStorage to keep the user logged in.
+
+    // Effect to manage user authentication and cart data on page reload
     useEffect(() => {
         if (!token && localStorage.getItem('token')) {
-            setToken(localStorage.getItem('token'))
+            setToken(localStorage.getItem('token'))  // Retrieve the token from localStorage and set it in the state
+            getUserCart(localStorage.getItem('token'))  // Fetch the user's cart data using token
         }
-    })
+    },[token])
 
+
+    useEffect(() => {
+        if (token) {
+            getUserCart(token);
+        } else {
+            setCartItems({}); // Clear cart items if no token
+        }
+    }, [token]);
+    
     const contextValue = {
         products,currency,delivery_fee,
         search,setSearch,showSearch,setShowSearch,
