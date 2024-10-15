@@ -8,7 +8,7 @@ export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
 
-    const currency = '$';
+    const currency = '\u20B9';
     const delivery_fee = 10;
     // backend url
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -161,15 +161,13 @@ const ShopContextProvider = (props) => {
     useEffect(() => {
         if (token) {
             getUserCart(token);
-        } else {
-            setCartItems({}); // Clear cart items if no token
-        }
+        } 
     }, [token]);
     
     const contextValue = {
         products,currency,delivery_fee,
         search,setSearch,showSearch,setShowSearch,
-        cartItems,addToCart,getCartCount,updateQuantity,getCartAmount,
+        cartItems,addToCart,getCartCount,setCartItems,updateQuantity,getCartAmount,
         navigate,
         backendUrl,
         setToken,token,
