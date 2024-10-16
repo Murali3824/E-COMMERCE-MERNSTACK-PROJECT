@@ -7,8 +7,22 @@ const addToCart = async (req,res) => {
     try {
 
         const  { userId, itemId, size } = req.body
+
+        if (!userId) {
+            return res.status(400).json({
+                success: false,
+                message: "User ID is required"
+            });
+        }
         
         const userData = await userModel.findById(userId)
+        if (!userData) {
+            return res.status(401).json({
+                success: false,
+                message: "User not found. Please log in or register."
+            });
+        }
+
         let cartData = await userData.cartData;
         
         if (cartData[itemId]) {
@@ -38,7 +52,7 @@ const addToCart = async (req,res) => {
     }
 }
 
-// // update user cart
+// update user cart
 const updateCart = async (req,res) => {
     try {
 

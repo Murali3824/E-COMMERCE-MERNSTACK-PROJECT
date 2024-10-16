@@ -102,7 +102,6 @@ const registerUser = async (req, res) => {
     }
 };
 
-
 // Get user profile
 const getUserProfile = async (req, res) => {
     try {
@@ -118,10 +117,16 @@ const getUserProfile = async (req, res) => {
             });
         }
 
-        // Send the user profile details as the response
+        // Generate profile avatar based on the user's name using UI Avatars
+        const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`;
+
+        // Send the user profile details along with the avatar URL as the response
         res.json({
             success: true,
-            user,
+            user: {
+                ...user._doc,
+                avatarUrl, // Include the avatar URL in the response
+            },
         });
 
     } catch (error) {
@@ -132,8 +137,6 @@ const getUserProfile = async (req, res) => {
         });
     }
 };
-
-
 
 
 // Route for admin login
