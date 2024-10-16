@@ -33,25 +33,37 @@ const MyProfile = () => {
     useEffect(() => {
         fetchProfileData();
     }, [token]);
-    
+
     return (
-        <div className="px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] lg:[9vw]  border-t pt-16">
-            <div className='text-3xl p-2'>
-                <Title text1={'My'} text2={'Profile'} />
-            </div>
-            <div className="w-full bg-white mt-5 p-4 shadow-lg rounded-lg">
-                {profileData ? (
-                    <>
-                        <div className="text-lg mb-2">
-                            <p className='font-medium'>Username : <span> {profileData.name} </span></p>
-                        </div>
-                        <div className="text-lg mb-2">
-                            <p className='font-medium'>Email : <span> {profileData.email} </span></p>
-                        </div>
-                    </>
-                ) : (
-                    <p>Loading profile...</p>
-                )}
+        <div className="px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] lg:[9vw] border-t flex justify-center items-center sm:min-h-screen   bg-gray-50">
+            <div className="my-20 sm:my-0 max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
+                <div className="text-xl text-center mb-6">
+                    <Title text1={'My'} text2={'Profile'} />
+                </div>
+                <div className="flex flex-col items-center">
+                    {profileData ? (
+                        <>
+                            {/* Display the avatar */}
+                            <div className="mb-4">
+                                <img 
+                                    src={profileData.avatarUrl} 
+                                    alt="Profile Avatar" 
+                                    className="w-24 h-24 rounded-full shadow-md" 
+                                />
+                            </div>
+
+                            {/* Display the user's name and email */}
+                            <div className="text-center text-lg mb-2">
+                                <p className="text-gray-700 font-normal">Username : <span className="text-black font-normal">{profileData.name}</span></p>
+                            </div>
+                            <div className="text-center text-lg font-semibold">
+                                <p className="text-gray-700 font-normal">Email : <span className="text-black font-normal">{profileData.email}</span></p>
+                            </div>
+                        </>
+                    ) : (
+                        <p className="text-gray-500">Loading profile...</p>
+                    )}
+                </div>
             </div>
         </div>
     );

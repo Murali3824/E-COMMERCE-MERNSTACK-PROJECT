@@ -22,11 +22,18 @@ const ShopContextProvider = (props) => {
 
     const addToCart = async (itemId, size) => {
 
+        
+        // Check if the user is logged in
+        if (!token) {
+            toast.warning('Please log/register to add items to your cart.');
+            return;
+        }
+
         if (!size) {
             toast.error('Select Product Size');
             return;
         }
-    
+
         const cartData = structuredClone(cartItems || {});
     
         if (cartData[itemId]) {
