@@ -43,10 +43,10 @@ const MyProfile = () => {
                 {profileData ? (
                     <>
                         <div className="text-lg mb-2">
-                            <p className='font-medium'>Username : <span>{profileData.name}</span></p>
+                            <p className='font-medium'>Username : <span> {profileData.name} </span></p>
                         </div>
                         <div className="text-lg mb-2">
-                            <p className='font-medium'>Email : <span>{profileData.email}</span></p>
+                            <p className='font-medium'>Email : <span> {profileData.email} </span></p>
                         </div>
                     </>
                 ) : (
