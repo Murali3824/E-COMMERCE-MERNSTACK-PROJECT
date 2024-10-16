@@ -103,6 +103,38 @@ const registerUser = async (req, res) => {
 };
 
 
+// Get user profile
+const getUserProfile = async (req, res) => {
+    try {
+        const userId = req.body.userId;  // Get userId from the request (set by the userAuth middleware)
+
+        // Fetch the user data from the database, excluding the password field
+        const user = await userModel.findById(userId).select('-password');
+        
+        if (!user) {
+            return res.json({
+                success: false,
+                message: "User not found",
+            });
+        }
+
+        // Send the user profile details as the response
+        res.json({
+            success: true,
+            user,
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.json({
+            success: false,
+            message: error.message,
+        });
+    }
+};
+
+
+
 
 // Route for admin login
 const adminLogin = async (req,res) => {
@@ -131,4 +163,5 @@ const adminLogin = async (req,res) => {
     }
 }
 
-export {loginUser,registerUser,adminLogin}
+
+export {loginUser,registerUser,adminLogin,getUserProfile}
