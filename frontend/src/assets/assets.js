@@ -23,7 +23,7 @@ import f3_img from './f3.png'
 import f4_img from './f4.png'
 import f5_img from './f5.png'
 import f6_img from './f6.png'
-import ecom_logo from './ecomlogo.jpg'
+import ecom_logo from './ecomlogo.png'
 import button_bg from './button.png'
 import banner_img from './banner.png'
 import banner2_img from './banner2.jpg'
@@ -37,10 +37,9 @@ import b4_1_img from './b4.2.jpg'
 import b9_img from './b9.jpg'
 import new_1 from './new1.avif'
 import new_2 from './new2.avif'
-
-
-
-
+import filter_icon from './filter_icon.png'
+import sorting_icon from './sorting_icon.png'
+import no_product from './no_product.webp'
 
 
 export const assets = {
@@ -82,5 +81,8 @@ export const assets = {
     b4_1_img,
     b9_img,
     new_1,
-    new_2
+    new_2,
+    filter_icon,
+    sorting_icon,
+    no_product
 }

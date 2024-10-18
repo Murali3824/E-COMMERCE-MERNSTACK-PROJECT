@@ -62,7 +62,10 @@ const Cart = () => {
                             )
                         })
                 ): (
-                    <p className="text-center text-gray-500">Your cart is empty.</p>
+                    <div className='flex flex-col items-center justify-center'>
+                        <img className='w-1/6' src={assets.no_product} alt="" />
+                        <p className="text-lg font-medium">Your cart is empty.</p>
+                    </div>
                 )}
             </div>
 
