@@ -13,7 +13,7 @@ const List = ({token}) => {
             const response = await axios.get(backendUrl + '/api/product/list');
             // console.log(response.data);
             if ((response.data.products)) {
-                setList(response.data.products)
+                setList(response.data.products.reverse())
             } 
             else {
                 toast.error(response.data.message)
