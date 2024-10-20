@@ -3,13 +3,11 @@ import hero_img from './hero_img.png'
 import cart_icon from './cart_icon.png'
 import bin_icon from './bin_icon.png'
 import dropdown_icon from './dropdown_icon.png'
-import exchange_icon from './exchange_icon.png'
 import profile_icon from './profile_icon.png'
 import quality_icon from './quality_icon.png'
 import search_icon from './search_icon.png'
 import star_dull_icon from './star_dull_icon.png'
 import star_icon from './star_icon.png'
-import support_img from './support_img.png'
 import menu_icon from './menu_icon.png'
 import about_img from './about_img.png'
 import contact_img from './contact_img.png'
@@ -40,6 +38,10 @@ import new_2 from './new2.avif'
 import filter_icon from './filter_icon.png'
 import sorting_icon from './sorting_icon.png'
 import no_product from './no_product.webp'
+import premium_badge from './premium-badge.png'
+import return_box from './return-box.png'
+import bag from './bag.gif'
+import checkout from './checkout.png'
 
 
 export const assets = {
@@ -47,14 +49,12 @@ export const assets = {
     hero_img,
     cart_icon,
     dropdown_icon,
-    exchange_icon,
     profile_icon,
     quality_icon,
     search_icon,
     star_dull_icon,
     star_icon,
     bin_icon,
-    support_img,
     menu_icon,
     about_img,
     contact_img,
@@ -84,5 +84,9 @@ export const assets = {
     new_2,
     filter_icon,
     sorting_icon,
-    no_product
+    no_product,
+    premium_badge,
+    return_box,
+    bag,
+    checkout,
 }

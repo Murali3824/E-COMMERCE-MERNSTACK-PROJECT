@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import Title from '../components/Title';
@@ -13,6 +13,8 @@ const Collection = () => {
     const [sortType, setSortType] = useState('relavance');
     const [showSortDropdown, setShowSortDropdown] = useState(false);
     const [selectedSort, setSelectedSort] = useState('Sort By');
+    
+    const sidebarRef = useRef(null);
 
     const toggleCategory = (e) => {
         if (category.includes(e.target.value)) {
@@ -20,6 +22,7 @@ const Collection = () => {
         } else {
             setCategory((prev) => [...prev, e.target.value]);
         }
+
         window.scrollTo({ top: 200, behavior: 'smooth' });
     };
 
@@ -29,6 +32,7 @@ const Collection = () => {
         } else {
             setSubCategory((prev) => [...prev, e.target.value]);
         }
+
         window.scrollTo({ top: 200, behavior: 'smooth' });
     };
 
@@ -43,9 +47,7 @@ const Collection = () => {
             productsCopy = productsCopy.filter((item) => category.includes(item.category));
         }
         if (subCategory.length > 0) {
-            productsCopy = productsCopy.filter((item) =>
-                subCategory.includes(item.subCategory)
-            );
+            productsCopy = productsCopy.filter((item) => subCategory.includes(item.subCategory));
         }
         setFilterProducts(productsCopy);
     };
@@ -79,27 +81,46 @@ const Collection = () => {
         setShowSortDropdown(false);
     };
 
+    // Close the sidebar when clicking outside
+    const handleClickOutside = (event) => {
+        if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+            setShowFilter(false);
+        }
+    };
+
+    useEffect(() => {
+        if (showFilter) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showFilter]);
+
     return (
-        <div>
+        <div className='relative'>
             {/* Banner */}
-            <div className='mt-4 leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-max-[35vh] sm:h-[35vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner2_img})` }}>
-                <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#stayHOME</p>
+            <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[25vh] sm:h-[30vh] md:h-[35vh] lg:h-[40vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner2_img})` }}>
+                <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#stay HOME</p>
                 <p className='text-white text-[14px] md:text-[16px] p-1 text-wrap'>Save more money with coupons & up to 70% off!</p>
             </div>
 
            {/* Mobile Filter and Sort Buttons */}
-            <div className="flex justify-between px-4 py-3 bg-white fixed bottom-0 left-0 w-full z-10 md:hidden">
+            <div className="flex justify-between px-4 py-3 bg-white fixed bottom-0 left-0 w-full z-10 md:hidden border-t">
                 <button
                     onClick={() => setShowFilter(!showFilter)}
-                    className="flex items-center justify-center gap-2 text-base font-semibold text-gray-700 rounded-lg p-2 w-1/2"
+                    className="flex items-center justify-center gap-2 text-base font-semibold text-gray-700 rounded-lg p-2 w-1/2 transition hover:bg-gray-100"
                 >
-                    Filter <img className='w-6' src={assets.filter_icon} alt="" />
+                    Filter <img className='w-6' src={assets.filter_icon} alt="Filter" />
                 </button>
                 <button
                     onClick={() => setShowSortDropdown(!showSortDropdown)}
-                    className="flex items-center justify-center gap-2 text-base font-semibold text-gray-700 rounded-lg p-2 w-1/2"
+                    className="flex items-center justify-center gap-2 text-base font-semibold text-gray-700 rounded-lg p-2 w-1/2 transition hover:bg-gray-100"
                 >
-                    Sort By <img className='w-6' src={assets.sorting_icon} alt="" />
+                    Sort By <img className='w-6' src={assets.sorting_icon} alt="Sort" />
                 </button>
                 {/* Sort Dropdown */}
                 {showSortDropdown && (
@@ -115,44 +136,52 @@ const Collection = () => {
             <div className='sm:px-[1vw] md:px-[2vw] lg:px-[3vw] flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
 
                 {/* Filter Sidebar (Visible on click for mobile) */}
-                <div className={`fixed z-20 bg-white p-4 w-[75%] top-0 left-0 h-full shadow-lg transition-transform transform ${showFilter ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 block md:hidden`}>
-                    <p onClick={() => setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>
-                        <i className="fas fa-times"></i> Close
-                    </p>
+                {showFilter && (
+                    <div className='fixed inset-0 bg-black bg-opacity-20 z-20 '>
 
-                    {/* Category Filter */}
-                    <div className='border border-gray-300 pl-5 py-3 mt-6'>
-                        <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
-                        <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-                            <p className='flex gap-2'>
-                                <input className='w-3' type='checkbox' value={'Men'} onChange={toggleCategory} /> Men
-                            </p>
-                            <p className='flex gap-2'>
-                                <input className='w-3' type='checkbox' value={'Women'} onChange={toggleCategory} /> Women
-                            </p>
-                            <p className='flex gap-2'>
-                                <input className='w-3' type='checkbox' value={'Kids'} onChange={toggleCategory} /> Kids
-                            </p>
-                        </div>
-                    </div>
+                    <div ref={sidebarRef} className={`fixed z-20 bg-white p-4 w-[75%] top-0 left-0 h-full shadow-lg transition-transform transform ${showFilter ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 block md:hidden`}>
+                        <p onClick={() => setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>
+                            <img src={assets.cross_icon} className='w-4' alt="" /> Close
+                        </p>
 
-                    {/* Subcategory Filter */}
-                    <div className='border border-gray-300 pl-5 py-3 mt-6 my-5'>
-                        <p className='mb-3 text-sm font-medium'>TYPE</p>
-                        <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-                            <p className='flex gap-2'>
-                                <input className='w-3' type='checkbox' value={'Topwear'} onChange={togglesubCategory} /> Topwear
-                            </p>
-                            <p className='flex gap-2'>
-                                <input className='w-3' type='checkbox' value={'Bottomwear'} onChange={togglesubCategory} /> Bottomwear
-                            </p>
-                            <p className='flex gap-2'>
-                                <input className='w-3' type='checkbox' value={'Winterwear'} onChange={togglesubCategory} /> Winterwear
-                            </p>
+                        {/* Category Filter */}
+                        <div className='border border-gray-300 pl-5 py-3 mt-6'>
+                            <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
+                            <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
+                                <p className='flex gap-2'>
+                                    <input className='w-3' type='checkbox' value={'Men'} onChange={toggleCategory} /> Men
+                                </p>
+                                <p className='flex gap-2'>
+                                    <input className='w-3' type='checkbox' value={'Women'} onChange={toggleCategory} /> Women
+                                </p>
+                                <p className='flex gap-2'>
+                                    <input className='w-3' type='checkbox' value={'Kids'} onChange={toggleCategory} /> Kids
+                                </p>
+                            </div>
                         </div>
+
+                        {/* Subcategory Filter */}
+                        <div className='border border-gray-300 pl-5 py-3 mt-6 my-5'>
+                            <p className='mb-3 text-sm font-medium'>TYPE</p>
+                            <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
+                                <p className='flex gap-2'>
+                                    <input className='w-3' type='checkbox' value={'Topwear'} onChange={togglesubCategory} /> Topwear
+                                </p>
+                                <p className='flex gap-2'>
+                                    <input className='w-3' type='checkbox' value={'Bottomwear'} onChange={togglesubCategory} /> Bottomwear
+                                </p>
+                                <p className='flex gap-2'>
+                                    <input className='w-3' type='checkbox' value={'Winterwear'} onChange={togglesubCategory} /> Winterwear
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
+                    
                 </div>
+                )
 
+                }
                 {/* Left-side Filter (Sticky) */}
                 <div className='min-w-60 sm:px-0 hidden md:block'>
                     <div className='sticky top-20'>
@@ -247,7 +276,9 @@ const Collection = () => {
                             />
                         ))}
                     </div>
+
                 </div>
+                
             </div>
         </div>
     );

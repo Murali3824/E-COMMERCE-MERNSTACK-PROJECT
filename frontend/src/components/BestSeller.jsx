@@ -24,7 +24,7 @@ const BestSeller = () => {
             <div className='flex flex-col items-center text-center py-8 text-3xl sm:text-4xl'>
                 <Title text1={' Best'} text2={'SELLERS'} />
                 <p className='w-3/4 mt-1 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas repellat
+                    Discover our top-selling products that our customers love!
                 </p>
             </div>
             {/* Rendering Products */}

@@ -7,10 +7,12 @@ import Features from '../components/Features';
 import Offers from '../components/Offers';
 import NewsetterBox from '../components/NewsetterBox';
 import NewDeals from '../components/NewDeals';
+import ScrollToTop from '../components/ScrollToTop';
 
 const Home = () => {
     return (
         <div>
+            <ScrollToTop/>
             <Hero/>
             <LatestCollections/>
             <NewDeals/>

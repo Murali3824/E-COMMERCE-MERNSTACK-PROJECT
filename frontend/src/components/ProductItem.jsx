@@ -21,14 +21,14 @@ const ProductItem = ({ id, image, name, price }) => {
             </div>
             
             {/* Product Info */}
-            <div className='px-4 py-3'>
+            <div className=' px-2 py-3'>
                 {/* Product Name */}
-                <h2 className='text-gray-800 text-base font-semibold truncate group-hover:text-[#088178] transition-colors duration-300'>
+                <h2 className='text-gray-800 text-sm sm:text-base font-medium sm:font-semibold truncate group-hover:text-[#088178] transition-colors duration-300'>
                     {name}
                 </h2>
 
                 {/* Product Price */}
-                <p className='mt-2 text-gray-600 font-medium text-lg'>
+                <p className='mt-2 text-gray-600 font-semibold text-balance sm:text-lg'>
                     {currency}{price}
                 </p>
             </div>

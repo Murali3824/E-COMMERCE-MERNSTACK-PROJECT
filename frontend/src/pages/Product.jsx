@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
-import OurPolicy from '../components/OurPolicy'
 import RelatedProducts from '../components/RelatedProducts';
+import Reviews from '../components/Reviews';
 
 const Product = () => {
     const { productId } = useParams();
@@ -96,10 +96,10 @@ const Product = () => {
                 </div>
 
             </div>
-
-            {/* Policy Section  */}
-                                    
-            <OurPolicy/>
+            
+            {/* Review Section  */}
+            
+            <Reviews/>
 
             {/* Display related products  */}
 

@@ -17,6 +17,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify.jsx';
 import MyProfile from './pages/Myprofile.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 
 const App = () => {
   return (

@@ -3,10 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
-a.active hr{
-    display: block;
-}
 
+a.active hr {
+    transform: scale(1); /* Ensure the line is visible when active */
+}
 *{
     font-family: "Poppins", sans-serif;
     font-weight: 300;

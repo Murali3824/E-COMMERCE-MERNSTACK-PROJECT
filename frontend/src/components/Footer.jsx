@@ -13,8 +13,7 @@ const Footer = () => {
                 <div>
                     <img src={assets.ecom_logo} alt="E-commerce logo" className="mb-5 w-[75px]" />
                     <p className="w-full md:w-2/3 mb-4 text-gray-600 leading-relaxed">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero excepturi illo praesentium dolore soluta itaque.
-                    </p>
+                        Your one-stop shop for the latest trends in fashion and lifestyle. We are dedicated to providing you with the best products and services, ensuring a seamless shopping experience.                    </p>
                     <p className="text-lg font-medium mt-6 mb-3">Follow us</p>
                     <div className="flex gap-4 text-gray-500 text-lg">
                         <Link to="#facebook" className="hover:text-[#088178]"><FaFacebook /></Link>

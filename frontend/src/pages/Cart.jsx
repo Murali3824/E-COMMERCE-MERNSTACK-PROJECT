@@ -32,54 +32,82 @@ const Cart = () => {
 
     return (
         <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] border-t pt-14'>
-            
-            <div className='text-2xl sm:text-3xl mb-3'>
-                <Title text1={'Your'} text2={'CART'}/>
+    
+            {/* Free Shipping Banner */}
+            <div className='bg-green-100 p-2 rounded text-green-700 text-center text-sm font-semibold'>
+                Hurray! Free Shipping on this orders.
             </div>
-
-            <div className=''>
-                {cartData.length > 0 ? (
-                        cartData.map((item,index) => {
+    
+            {/* Cart Section */}
+            <div className='grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 mt-6'>
+    
+                {/* Left: Shopping Cart Items */}
+                <div>
+                    <div className='text-2xl sm:text-3xl mb-3'>
+                        <Title text1={'Your'} text2={'CART'} />
+                    </div>
+    
+                    {cartData.length > 0 ? (
+                        cartData.map((item, index) => {
                             const productData = products.find((product) => product._id === item._id);
                             return (
-                                <div key={index} className='px-4 sm:px-[5vw] md:px-[7vw] lg:[9vw] py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4'>
-                                    <div className='flex items-start gap-6'>
-                                        <img className='w-16 sm:w-20' src={productData.image[0]} alt="" />
-                                        <div>
-                                            <p className='text-xs sm:text-lg font-medium'>{productData.name}</p>
-                                            <div className='flex items-center gap-5 mt-2'>
-                                                <p>{currency}{productData.price}</p>
-                                                <p className='px-2 sm:px-3 sm:py-1 border rounded bg-gray-100'>{item.size}</p>
-                                            </div>
-                                        </div>
+                                <div key={index} className='p-4 border-b flex gap-6 items-center'>
+                                    {/* Product Image */}
+                                    <img className='w-20' src={productData.image[0]} alt={productData.name} />
+    
+                                    {/* Product Details */}
+                                    <div className='flex-grow'>
+                                        <p className=' text-sm sm:text-lg text-gray-700 font-medium'>{productData.name}</p>
+                                        <p className='text-sm font-medium'>{currency}{productData.price}</p>
+                                        <p className='text-sm text-gray-700 font-normal'>Size: <span className='text-black font-normal' >{item.size}</span></p>
                                     </div>
-                                    <input onChange={(e)=>e.target.value === ''|| e.target.value === '0'
-                                            ? null 
-                                            : updateQuantity(item._id,item.size,Number(e.target.value))
-                                        } className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' type="number" min={1} defaultValue={item.quantity} />
-                                    <img onClick={()=>updateQuantity(item._id,item.size,0)} className='w-4 mr-4 sm:w-5 cursor-pointer' src={assets.bin_icon} alt="" />
+    
+                                    {/* Quantity & Remove */}
+                                    <div className='flex items-center gap-4'>
+                                        <input
+                                            onChange={(e) =>
+                                                e.target.value === '' || e.target.value === '0'
+                                                    ? null
+                                                    : updateQuantity(item._id, item.size, Number(e.target.value))
+                                            }
+                                            className='border w-12 px-2 py-1 text-center'
+                                            type='number'
+                                            min={1}
+                                            defaultValue={item.quantity}
+                                        />
+                                        <img
+                                            onClick={() => updateQuantity(item._id, item.size, 0)}
+                                            className='w-5 cursor-pointer'
+                                            src={assets.bin_icon}
+                                            alt='Remove'
+                                        />
+                                    </div>
                                 </div>
-                            )
+                            );
                         })
-                ): (
-                    <div className='flex flex-col items-center justify-center'>
-                        <img className='w-1/6' src={assets.no_product} alt="" />
-                        <p className="text-lg font-medium">Your cart is empty.</p>
-                    </div>
-                )}
-            </div>
-
-            <div className='flex justify-end my-20'>
-                <div className='w-full sm:w-[450px]'>
-                    <CartTotal/>
-                    <div className='w-full text-end'>
-                        <button onClick={()=>navigate('/placeorder')} className='bg-black rounded text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button>
-                    </div>
+                    ) : (
+                        <div className='flex flex-col items-center justify-center'>
+                            <img className='w-1/6' src={assets.no_product} alt='No items in cart' />
+                            <p className='text-lg font-medium'>Your cart is empty.</p>
+                        </div>
+                    )}
                 </div>
+    
+                {/* Right: Price Summary */}
+                <div className='flex justify-end my-12 '>
+                    <div className='w-full sm:w-[450px]'>
+                        <CartTotal />
+                        {/* Checkout Button */}
+                        <button onClick={() => navigate('/placeorder')} className='w-full mt-6 bg-black text-white py-3 rounded'>
+                            Checkout
+                        </button>
+                        
+                    </div>
             </div>
-
+            </div>
         </div>
     );
+    
 };
 
 export default Cart;

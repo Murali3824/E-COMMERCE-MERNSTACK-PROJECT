@@ -15,7 +15,7 @@ const MyProfile = () => {
                 return;
             }
         
-            const response = await axios.post(backendUrl + '/api/user/profile', {}, {headers:{token}});
+            const response = await axios.post(backendUrl + '/api/user/profile', {}, { headers: { token } });
         
             if (response.data.success) {
                 console.log(response.data.user);
@@ -35,9 +35,9 @@ const MyProfile = () => {
     }, [token]);
 
     return (
-        <div className="px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] lg:[9vw] border-t flex justify-center items-center sm:min-h-screen   bg-gray-50">
-            <div className="my-20 sm:my-0 max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
-                <div className="text-xl text-center mb-6">
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 py-10">
+            <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 transition-transform transform hover:scale-105">
+                <div className="text-2xl text-center mb-6">
                     <Title text1={'My'} text2={'Profile'} />
                 </div>
                 <div className="flex flex-col items-center">
@@ -48,16 +48,20 @@ const MyProfile = () => {
                                 <img 
                                     src={profileData.avatarUrl} 
                                     alt="Profile Avatar" 
-                                    className="w-24 h-24 rounded-full shadow-md" 
+                                    className="w-32 h-32 rounded-full shadow-lg transition-transform transform hover:scale-110" 
                                 />
                             </div>
 
                             {/* Display the user's name and email */}
-                            <div className="text-center text-lg mb-2">
-                                <p className="text-gray-700 font-normal">Username : <span className="text-black font-normal">{profileData.name}</span></p>
+                            <div className="text-center mb-4">
+                                <p className="text-gray-700 text-lg">Username: 
+                                    <span className="text-black font-semibold"> {profileData.name}</span>
+                                </p>
                             </div>
-                            <div className="text-center text-lg font-semibold">
-                                <p className="text-gray-700 font-normal">Email : <span className="text-black font-normal">{profileData.email}</span></p>
+                            <div className="text-center">
+                                <p className="text-gray-700 text-lg">Email: 
+                                    <span className="text-black font-semibold"> {profileData.email}</span>
+                                </p>
                             </div>
                         </>
                     ) : (
