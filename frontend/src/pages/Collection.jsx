@@ -5,7 +5,7 @@ import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
 
 const Collection = () => {
-    const { products, search, showSearch } = useContext(ShopContext);
+    const { products, search } = useContext(ShopContext);
     const [showFilter, setShowFilter] = useState(false);
     const [filterProducts, setFilterProducts] = useState([]);
     const [category, setCategory] = useState([]);
@@ -38,23 +38,34 @@ const Collection = () => {
 
     const applyFilter = () => {
         let productsCopy = products.slice();
-        if (showSearch && search) {
+    
+        // Search filter: Check name, category, or description
+        if (search) {
+            const searchQuery = search.toLowerCase();
             productsCopy = productsCopy.filter((item) =>
-                item.name.toLowerCase().includes(search.toLowerCase())
+                item.name.toLowerCase().includes(searchQuery) ||
+                item.category.toLowerCase().includes(searchQuery) ||
+                item.description.toLowerCase().includes(searchQuery) // Assuming you have a description field
             );
         }
+    
+        // Category filter
         if (category.length > 0) {
             productsCopy = productsCopy.filter((item) => category.includes(item.category));
         }
+    
+        // Subcategory filter
         if (subCategory.length > 0) {
             productsCopy = productsCopy.filter((item) => subCategory.includes(item.subCategory));
         }
+    
         setFilterProducts(productsCopy);
     };
+    
 
     useEffect(() => {
         applyFilter();
-    }, [category, subCategory, search, showSearch, products]);
+    }, [category, subCategory, search, products]);
 
     const sortProducts = (sortOption) => {
         let fpCopy = filterProducts.slice();
@@ -101,7 +112,7 @@ const Collection = () => {
     }, [showFilter]);
 
     return (
-        <div className='relative'>
+        <div>
             {/* Banner */}
             <div className='leading-[54px] p-1 flex flex-col justify-center items-center text-center w-full h-[25vh] sm:h-[30vh] md:h-[35vh] lg:h-[40vh] bg-cover bg-center' style={{ backgroundImage: `url(${assets.banner2_img})` }}>
                 <p className='text-white text-[45px] md:text-[50px] font-semibold py-2.5'>#stay HOME</p>

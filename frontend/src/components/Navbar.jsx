@@ -9,7 +9,7 @@ const Navbar = () => {
     const [isSticky, setIsSticky] = useState(false);
     const sidebarRef = useRef(null);
 
-    const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
+    const { getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
 
     const logout = () => {
         navigate('/loginsignup');
@@ -45,11 +45,11 @@ const Navbar = () => {
     }, []);
 
     return (
-        <div className={`px-3 sm:px-[2vw] md:px-[3vw] lg:px-[4vw] flex items-center justify-between py-5 font-medium transition-all duration-300 ${isSticky ? 'fixed top-0 bg-white shadow-md' : ''} w-full z-10`}>
+        <div className={`px-2 sm:px-[2vw] md:px-[3vw] lg:px-[4vw] flex items-center justify-between gap-6 sm:gap-0 py-3 sm:py-5 font-medium transition-all duration-300 ${isSticky ? 'fixed top-0 bg-white shadow-md' : ''} w-full z-10`}>
 
-            <div className='flex items-center gap-4 ml-1 sm:ml-0'>
+            <div className='flex items-center gap-2 sm:gap-4 ml-1 sm:ml-0'>
 
-                <img onClick={() => setVisible(true)} className='w-7 cursor-pointer sm:hidden' src={assets.menu_icon} alt="Menu" aria-label="Open Menu" />
+                <img onClick={() => setVisible(true)} className='w-8 cursor-pointer sm:hidden' src={assets.menu_icon} alt="Menu" aria-label="Open Menu" />
                 
                 {/* Sidebar menu for small screen */}
                 {visible && (
@@ -78,7 +78,7 @@ const Navbar = () => {
             
             </div>
 
-
+            {/* Desktop menu  */}
             <ul className='hidden sm:flex gap-8 text-base text-[#222]'>
                 <NavLink to='/' className='flex flex-col items-center gap-1 group'>
                     <p className='font-medium md:text-lg'>Home</p>
@@ -98,31 +98,28 @@ const Navbar = () => {
                 </NavLink>
             </ul>
 
-            {/* Icons and Cart */}
-            <div className='flex items-center gap-6 mr-2.5 sm:mr-0'>
-                <Link>
-                    <SearchBar/>
-                    {/* <img src={assets.search_icon} className='w-5 cursor-pointer' alt="" /> */}
-                </Link>
-                <div className='group relative'>
-                    <img onClick={() => token ? null : navigate('/loginsignup')} src={assets.profile_icon} className='w-5 cursor-pointer' alt="Profile" />
+            {/* Search, Profile, and Cart */}
+            <div className="flex items-center gap-4 sm:gap-6 mr-1 sm:mr-0">
+                <SearchBar />
+                <img className='w-7 md:hidden' src={assets.search_icon} alt="" />
+                <div className="group relative">
+                    <img onClick={() => token ? null : navigate('/loginsignup')} src={assets.profile_icon} className=" w-7 sm:min-w-8 cursor-pointer" alt="Profile" />
                     {token && (
-                        <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
-                            <div className='flex flex-col w-36 bg-slate-100 text-gray-500 rounded'>
-                                <p onClick={() => navigate('/myprofile')} className='cursor-pointer px-4 py-2 text-sm hover:bg-black hover:text-white transition-all duration-500'>My Profile</p>
-                                <p onClick={() => navigate('/orders')} className='cursor-pointer px-4 py-2 text-sm hover:bg-black hover:text-white transition-all duration-500'>Orders</p>
-                                <p onClick={logout} className='cursor-pointer px-4 py-2 text-sm hover:bg-black hover:text-white transition-all duration-500'>Logout</p>
+                        <div className='absolute group-hover:block hidden dropdown-menu right-0 pt-4'>
+                            <div className='flex flex-col w-36  bg-white shadow-md rounded'>
+                                <p onClick={() => navigate('/myprofile')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-slate-100 transition-all duration-500'>My Profile</p>
+                                <p onClick={() => navigate('/orders')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-slate-100 transition-all duration-500'>Orders</p>
+                                <p onClick={logout} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 transition-all duration-500'>Logout</p>
                             </div>
                         </div>
                     )}
                 </div>
-                <Link to='/cart' className='relative'>
-                    <img src={assets.checkout} className='w-8 min-w-5 cursor-pointer' alt="" />
-                    <p className='absolute right-[6px] bottom-[14px] w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]'>
-                        {getCartCount()}
-                    </p>
+                <Link to="/cart" className="relative">
+                    <img src={assets.buy_cart} className="w-8 sm:min-w-9" alt="Cart" />
+                    <span className="absolute right-1 top-0 sm:top-1 w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[10px]">{getCartCount()}</span>
                 </Link>
             </div>
+
         </div>
     );
 };

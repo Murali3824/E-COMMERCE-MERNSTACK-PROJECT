@@ -3,7 +3,7 @@ import hero_img from './hero_img.png'
 import cart_icon from './cart_icon.png'
 import bin_icon from './bin_icon.png'
 import dropdown_icon from './dropdown_icon.png'
-import profile_icon from './profile_icon.png'
+import profile_icon from './profile-icon.png'
 import quality_icon from './quality_icon.png'
 import search_icon from './search_icon.png'
 import star_dull_icon from './star_dull_icon.png'
@@ -41,7 +41,7 @@ import no_product from './no_product.webp'
 import premium_badge from './premium-badge.png'
 import return_box from './return-box.png'
 import bag from './bag.gif'
-import checkout from './checkout.png'
+import buy_cart from './buy.png'
 
 
 export const assets = {
@@ -88,5 +88,5 @@ export const assets = {
     premium_badge,
     return_box,
     bag,
-    checkout,
+    buy_cart,
 }

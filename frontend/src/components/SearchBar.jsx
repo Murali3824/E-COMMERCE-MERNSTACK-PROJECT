@@ -1,34 +1,33 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
+import { useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
-import { useLocation } from 'react-router-dom';
 
 const SearchBar = () => {
+    const { search, setSearch } = useContext(ShopContext);
+    const navigate = useNavigate();
 
-    const {search,setSearch,showSearch,setShowSearch} = useContext(ShopContext);
-
-    const [visible,setVisible] = useState(false)
-
-    const location = useLocation();
-    useEffect(()=>{
-        // console.log(location.pathname);
-        if (location.pathname.includes('shop')) {
-            setVisible(true);
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && search.trim()) {
+            navigate(`/shop?search=${encodeURIComponent(search)}`);
         }
-        else{
-            setVisible(false)
-        }
-    },[location])
+    };
 
-    return showSearch && visible ? (
-        <div className='border-t border-b bg-gray-50 text-center'>
-            <div className='inline-flex items-center justify-center border border-gray-400 px-5 py-2 my-5 mx-3 rounded-full w-3/4 sm:w-1/2'>
-                <input value={search} onChange={(e)=>setSearch(e.target.value)} className='w-[100px] flex-1 outline-none bg-inherit text-sm ' type="text" placeholder='Search' />
-                <img className='w-4' src={assets.search_icon} alt="" />
+    return (
+        <div className="hidden md:flex items-center md:w-[200px] lg:w-full  bg-white border border-gray-300 rounded-full shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div className="flex items-center px-4">
+                <img className="w-5 h-4" src={assets.search_icon} alt="Search icon" />
             </div>
-            <img onClick={()=>setShowSearch(false)} className='inline w-4 cursor-pointer' src={assets.cross_icon} alt="" />
+            <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={handleKeyDown}
+                type="text"
+                placeholder="Search for products..."
+                className="w-full py-2 pl-1 pr-4 text-sm bg-transparent outline-none rounded-r-full"
+            />
         </div>
-    ): null
+    );
 };
 
 export default SearchBar;

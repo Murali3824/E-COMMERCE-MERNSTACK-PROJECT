@@ -4,8 +4,9 @@
 @tailwind utilities;
 
 
-a.active hr {
-    transform: scale(1); /* Ensure the line is visible when active */
+a.active p {
+    color: #088178;
+    font-weight: 600;
 }
 *{
     font-family: "Poppins", sans-serif;

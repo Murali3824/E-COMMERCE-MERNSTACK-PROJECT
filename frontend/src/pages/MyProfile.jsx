@@ -48,19 +48,19 @@ const MyProfile = () => {
                                 <img 
                                     src={profileData.avatarUrl} 
                                     alt="Profile Avatar" 
-                                    className="w-32 h-32 rounded-full shadow-lg transition-transform transform hover:scale-110" 
+                                    className="w-32 h-32 rounded-full shadow-lg " 
                                 />
                             </div>
 
                             {/* Display the user's name and email */}
                             <div className="text-center mb-4">
-                                <p className="text-gray-700 text-lg">Username: 
-                                    <span className="text-black font-semibold"> {profileData.name}</span>
+                                <p className="text-gray-700 text-lg font-normal">Username: 
+                                    <span className="text-black font-medium"> {profileData.name}</span>
                                 </p>
                             </div>
                             <div className="text-center">
-                                <p className="text-gray-700 text-lg">Email: 
-                                    <span className="text-black font-semibold"> {profileData.email}</span>
+                                <p className="text-gray-700 text-lg font-normal">Email: 
+                                    <span className="text-black font-medium"> {profileData.email}</span>
                                 </p>
                             </div>
                         </>
