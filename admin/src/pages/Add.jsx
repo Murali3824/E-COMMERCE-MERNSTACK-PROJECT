@@ -3,7 +3,7 @@ import { assets } from '../assets/assets';
 import axios from 'axios';
 import { backendUrl } from '../App';
 import { toast } from 'react-toastify';
-import LoadingOverlay from '../components/LoadingOverlay ';
+import LoadingOverlay from '../components/LoadingOverlay';
 
 const Add = ({ token }) => {
     const [image1, setImage1] = useState(false);
@@ -106,7 +106,7 @@ const Add = ({ token }) => {
                 </div>
 
                 {/* Category, sub-category, and price */}
-                <div className='flex flex-col sm:flex-row gap-2 w-full sm:gap-8'>
+                <div className='w-full flex flex-col sm:flex-row gap-2 sm:gap-8'>
                     <div>
                         <p className='mb-2 font-normal'>Product category</p>
                         <select onChange={(e) => setCategory(e.target.value)} className='w-full px-3 py-2' disabled={loading}>

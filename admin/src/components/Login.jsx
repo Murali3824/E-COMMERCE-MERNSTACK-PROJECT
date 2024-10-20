@@ -3,44 +3,65 @@ import React, { useState } from 'react';
 import { backendUrl } from '../App';
 import { toast } from 'react-toastify';
 
-const Login = ({setToken}) => {
-
-    const[email,setEmail] = useState('')
-    const[password,setPassword] = useState('')
+const Login = ({ setToken }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false); // For loading state
 
     const onSubmitHandler = async (e) => {
+        e.preventDefault(); // Prevent page from reloading
+        setLoading(true); // Set loading state
+
         try {
-
-            e.preventDefault(); // on submiting the form which prevents page from reloading
-            // console.log(email,password);
-            const response = await axios.post(backendUrl + '/api/user/admin',{email,password})
-            // console.log(response);
+            const response = await axios.post(backendUrl + '/api/user/admin', { email, password });
             if (response.data.success) {
-                setToken(response.data.token)
+                setToken(response.data.token);
+                toast.success('Login successful!'); // Success message
             } else {
-                toast.error(response.data.message)
+                toast.error(response.data.message); // Error message
             }
-
         } catch (error) {
-            console.log(error);
-            toast.error(error.message)
+            console.error(error);
+            toast.error(error.message); // Display error message
+        } finally {
+            setLoading(false); // Reset loading state
         }
-    }
+    };
 
     return (
-        <div className='min-h-screen flex items-center justify-center w-full'>
-            <div className='bg-white shadow-md rounded-lg px-8 py-6 max-w-md'>
-                <h1 className='text-center text-2xl font-semibold mb-4'>Admin Panel</h1>
+        <div className='min-h-screen flex items-center justify-center bg-gray-100'>
+            <div className='bg-white shadow-lg rounded-lg px-8 py-6 max-w-md'>
+                <h1 className='text-center text-2xl font-bold mb-6 text-gray-800'>Admin Panel</h1>
                 <form onSubmit={onSubmitHandler}>
-                    <div className='mb-3 min-w-72'>
-                        <p className='text-sm font-medium text-gray-700 mb-2'>Email Address</p>
-                        <input onChange={(e)=>setEmail(e.target.value)} value={email} className='roundeed-md w-full px-3 py-2  border border-gray-300' type="email" placeholder='youremail.com' required />
+                    <div className='mb-4'>
+                        <label className='block text-sm font-medium text-gray-700 mb-1'>Email Address</label>
+                        <input
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            className='rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#088178] transition duration-200'
+                            type="email"
+                            placeholder='youremail@example.com'
+                            required
+                        />
                     </div>
-                    <div className='mb-3 min-w-72'>
-                        <p className='text-sm font-medium text-gray-700 mb-2'>Password</p>
-                        <input onChange={(e)=>setPassword(e.target.value)} value={password} className='roundeed-md w-full px-3 py-2  border border-gray-300' type="password" placeholder='Enter your password' required />
+                    <div className='mb-4'>
+                        <label className='block text-sm font-medium text-gray-700 mb-1'>Password</label>
+                        <input
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            className='rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#088178] transition duration-200'
+                            type="password"
+                            placeholder='Enter your password'
+                            required
+                        />
                     </div>
-                    <button className='mt-2 w-full bg-[#088178] text-white font-medium px-4 py-2 ' type='submit'>Login</button>
+                    <button
+                        className={`mt-4 w-full bg-[#088178] text-white font-semibold px-4 py-2 rounded-md transition duration-200 hover:bg-[#066d66] ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        type='submit'
+                        disabled={loading} // Disable button during loading
+                    >
+                        {loading ? 'Loading...' : 'Login'}
+                    </button>
                 </form>
             </div>
         </div>

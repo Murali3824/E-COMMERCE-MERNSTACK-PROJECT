@@ -10,8 +10,8 @@ const Sidebar = () => {
                     <img className='w-5 h-5' src={assets.add_icon} alt="" />
                     <p className='hidden md:block font-normal'>Add items</p>
                 </NavLink>
-                <NavLink className="flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l" to="/list">
-                    <img className='w-5 h-5' src={assets.order_icon} alt="" />
+                <NavLink className="flex items-center gap-3 border border-gray-300 border-r-0 px-2.5 py-2 rounded-l" to="/list">
+                    <img className='w-6 h-5' src={assets.list} alt="" />
                     <p className='hidden md:block font-normal'>List items</p>
                 </NavLink>
                 <NavLink className="flex items-center gap-3 border border-gray-300 border-r-0 px-3 py-2 rounded-l" to="/orders">

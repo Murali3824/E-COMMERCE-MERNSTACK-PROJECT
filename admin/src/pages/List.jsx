@@ -48,10 +48,10 @@ const List = ({token}) => {
 
     return (
         <>
-            <p className='mb-4 font-semibold text-xl'>All Products List</p>
+            <p className='mb-4 font-semibold text-2xl text-center'>All Products List</p>
             <div className='flex flex-col gap-2'>
                 {/* list titles  */}
-                <div className='hidden md:grid grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center py-1 px-2 border bg-gray-100 text-sm'>
+                <div className='hidden md:grid grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center py-3 px-4 border bg-gray-100 text-sm'>
                     <b>Image</b>
                     <b>Name</b>
                     <b>Category</b>
@@ -61,13 +61,21 @@ const List = ({token}) => {
                 {/* list products  */}
                 {
                     list.map((item,index) => (
-                        <div className='grid grid-cols-[1fr_3fr_1fr] md:grid-cols-[1fr_3fr_1fr_1fr_1fr] gap-2 items-center py-1 px-2 border text-sm' key={index}>
-                            <img className='w-12' src={item.image[0]} alt="" />
-                            <p>{item.name}</p>
-                            <p>{item.category}</p>
-                            <p>{currency}{item.price}</p>
-                            <p onClick={()=>removeProduct(item._id)} className='text-right md:text-center cursor-pointer text-lg'>X</p>
+                        <div className='grid grid-cols-1 md:grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center py-3 px-4 border text-sm' key={index}>
+                            <img className='w-16  object-cover rounded-lg' src={item.image[0]} alt="" />
+                            <p className='mt-2 sm:mt-0 truncate font-medium text-gray-800'>{item.name}</p>
+                            <p className='hidden md:block text-gray-600 font-medium'>{item.category}</p>
+                            <p className='hidden md:block font-semibold text-gray-800'>{currency}{item.price}</p>
+                            <p onClick={()=>removeProduct(item._id)} className='hidden md:block text-red-500 text-right sm:text-center cursor-pointer text-lg hover:underline transition duration-200'>Remove</p>
+                            <div className='md:hidden flex items-center justify-between mt-2'>
+                                <div>
+                                    <p className=' text-gray-600 font-medium'>{item.category}</p>
+                                    <p className='font-semibold text-gray-800'>{currency}{item.price}</p>
+                                </div>
+                                <p onClick={()=>removeProduct(item._id)} className='text-red-500 text-center cursor-pointer text-lg hover:underline transition duration-200'>Remove</p>
+                            </div>
                         </div>
+                        
                     ))
                 }
             </div>
