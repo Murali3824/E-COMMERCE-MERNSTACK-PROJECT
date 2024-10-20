@@ -44,8 +44,8 @@ const Collection = () => {
             const searchQuery = search.toLowerCase();
             productsCopy = productsCopy.filter((item) =>
                 item.name.toLowerCase().includes(searchQuery) ||
-                item.category.toLowerCase().includes(searchQuery) ||
-                item.description.toLowerCase().includes(searchQuery) // Assuming you have a description field
+                item.category.toLowerCase().includes(searchQuery)
+                // item.description.toLowerCase().includes(searchQuery)
             );
         }
     
