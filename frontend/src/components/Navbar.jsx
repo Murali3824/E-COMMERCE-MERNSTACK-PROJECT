@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
+import SearchBar from './SearchBar.jsx'
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
@@ -99,11 +100,12 @@ const Navbar = () => {
 
             {/* Icons and Cart */}
             <div className='flex items-center gap-6 mr-2.5 sm:mr-0'>
-                <Link to="/shop">
-                    <img onClick={() => setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
+                <Link>
+                    <SearchBar/>
+                    {/* <img src={assets.search_icon} className='w-5 cursor-pointer' alt="" /> */}
                 </Link>
                 <div className='group relative'>
-                    <img onClick={() => token ? null : navigate('/loginsignup')} src={assets.profile_icon} className='w-5 cursor-pointer' alt="" />
+                    <img onClick={() => token ? null : navigate('/loginsignup')} src={assets.profile_icon} className='w-5 cursor-pointer' alt="Profile" />
                     {token && (
                         <div className='group-hover:block hidden absolute dropdown-menu right-0 pt-4'>
                             <div className='flex flex-col w-36 bg-slate-100 text-gray-500 rounded'>
