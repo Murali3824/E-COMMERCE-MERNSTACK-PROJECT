@@ -42,17 +42,7 @@ import premium_badge from './premium-badge.png'
 import return_box from './return-box.png'
 import bag from './bag.gif'
 import buy_cart from './buy.png'
-import shop_banner1 from './shopping_banner1.webp'
-import shop_banner2 from './shopping_banner2.jpg'
-import shop_banner3 from './shopping_banner3.jpg'
-import shop_banner4 from './shopping_banner4.avif'
-import shop_banner5 from './shopping_banner5.jpg'
-import shop_banner6 from './shopping_banner6.webp'
-import shop_banner7 from './shopping_banner7.jpg'
-import shop_banner8 from './shop_banner1.webp'
-import shop_banner9 from './shop_banner2.webp'
-import shop_banner10 from './shop_banner3.webp'
-
+import banner_video from './banner_video .webm'
 
 
 
@@ -102,14 +92,5 @@ export const assets = {
     return_box,
     bag,
     buy_cart,
-    shop_banner1,
-    shop_banner2,
-    shop_banner3,
-    shop_banner4,
-    shop_banner5,
-    shop_banner6,
-    shop_banner7,
-    shop_banner8,
-    shop_banner9,
-    shop_banner10
+    banner_video
 }

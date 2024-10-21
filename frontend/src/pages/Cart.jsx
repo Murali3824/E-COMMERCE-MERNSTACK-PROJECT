@@ -34,12 +34,14 @@ const Cart = () => {
         <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] border-t pt-14'>
     
             {/* Free Shipping Banner */}
-            <div className='bg-green-100 p-2 rounded text-green-700 text-center text-sm font-semibold'>
-                Hurray! Free Shipping on this orders.
-            </div>
+            {cartData.length > 0 && (
+                <div className='bg-green-100 p-2 rounded text-green-700 text-center text-sm font-semibold'>
+                    Hurray! Free Shipping on this order.
+                </div>
+            )}
     
             {/* Cart Section */}
-            <div className='grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 mt-6'>
+            <div className='grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 mt-6'>
     
                 {/* Left: Shopping Cart Items */}
                 <div>
@@ -95,10 +97,10 @@ const Cart = () => {
     
                 {/* Right: Price Summary */}
                 <div className='flex justify-end my-12 '>
-                    <div className='w-full sm:w-[450px]'>
+                    <div className='w-full lg:w-[350px] xl:w-[450px]'>
                         <CartTotal />
                         {/* Checkout Button */}
-                        <button onClick={() => navigate('/placeorder')} className='w-full mt-6 bg-black text-white py-3 rounded'>
+                        <button onClick={() => navigate('/placeorder')} className='w-full mt-4 bg-black text-white py-3 rounded'>
                             Checkout
                         </button>
                         

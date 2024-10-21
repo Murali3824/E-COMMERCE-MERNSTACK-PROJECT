@@ -68,8 +68,17 @@ const Orders = () => {
                                     </div>
                                     <div className='md:w-1/3 flex justify-between items-center mt-4 md:mt-0'>
                                         <div className='flex items-center gap-2'>
-                                            <span className={`h-2 w-2 rounded-full ${item.status === 'Delivered' ? 'bg-green-500' : 'bg-yellow-500'}`}></span>
-                                            <p className='text-sm md:text-base'>{item.status}</p>
+                                        {/* Status Indicator */}
+                                        <span
+                                            className={`h-2 w-2 rounded-full ${
+                                                item.status === 'Delivered' ? 'bg-green-500' :
+                                                item.status === 'Order Placed' ? 'bg-blue-500' :
+                                                item.status === 'Order Shipped' ? 'bg-yellow-500' :
+                                                item.status === 'Out for delivery' ? 'bg-orange-500' :
+                                                'bg-gray-500' // Default color for unknown status
+                                            }`}
+                                        ></span>             
+                                        <p className='text-sm md:text-base'>{item.status}</p>
                                         </div>
                                         <button onClick={loadOrderData} className='border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 rounded-sm hover:bg-gray-100 transition'>
                                             Track Order
