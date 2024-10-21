@@ -11,7 +11,6 @@ import PlaceOrder from './pages/PlaceOrder';
 import Cart from './pages/Cart.jsx';
 import Orders from './pages/Orders';
 import Footer from './components/Footer.jsx';
-// import SearchBar from './components/SearchBar.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify.jsx';
@@ -27,7 +26,6 @@ const App = () => {
       <ToastContainer />
       <ScrollToTop />
       <Navbar />
-      {/* <SearchBar /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Collection />} />

@@ -1,34 +1,50 @@
 import React from 'react';
-import { assets } from '../assets/assets';
+import Slider from 'react-slick';
+import { assets } from '../assets/assets'; 
 import { Link } from 'react-router-dom';
-import TextAnimi from './TextAnimi';
+
+// Array of images for the slider
+const sliderImages = [
+    // { src: assets.shop_banner1, alt: "Image 1" },
+    // { src: assets.shop_banner2, alt: "Image 2" },
+    // { src: assets.shop_banner3, alt: "Image 3" }, 
+    // { src: assets.shop_banner4, alt: "Image 3" }, 
+    // { src: assets.shop_banner5, alt: "Image 3" }, 
+    { src: assets.shop_banner6, alt: "Image 3" }, 
+    { src: assets.shop_banner7, alt: "Image 3" }, 
+    // { src: assets.shop_banner8, alt: "Image 3" }, 
+    // { src: assets.shop_banner9, alt: "Image 3" }, 
+    // { src: assets.shop_banner10, alt: "Image 3" }, 
+
+];
 
 const Hero = () => {
-    return (
-        <div className='w-full bg-[#E3E5F1] flex flex-col sm:flex-row border border-gray-200 shadow-lg'>
-            {/* Hero left side */}
-            <div className='w-full sm:w-1/2 flex flex-col gap-6 items-center justify-center p-8 sm:p-12'>
-                <div className='flex flex-col gap-4 sm:text-left'>
-                    <b className='text-[#222] font-semibold text-3xl lg:text-5xl'>
-                        Exclusive Discounts
-                    </b>
-                    <b className='text-[#222] font-medium text-3xl lg:text-5xl'>
-                        On all<TextAnimi />
-                    </b>
-                </div>
-                <Link to='/shop' className=' cursor-pointer w-52  text-sm bg-cover bg-center  mt-5 p-2 text-[#088178]' style={{ backgroundImage: `url(${assets.button_bg})` }}>
-                    <p className='text-center px-4 font-medium text-sm md:text-base'>Shop Now </p>
-                </Link>
-            </div>
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    };
 
-            {/* Hero right side */}
-            <div className='w-full sm:w-1/2'>
-                <img
-                    className='w-full h-auto object-cover'
-                    src={assets.b1_img}
-                    alt="Discount Banner"
-                />
-            </div>
+    return (
+        <div>
+            <Slider {...settings}>
+                {sliderImages.map((image, index) => (
+                    <div key={index} className="w-full relative overflow-hidden">
+                        <Link to="/shop" className='group'>
+                            <img
+                                className="w-full h-[50vh] md:h-[80vh] lg:h-[100vh] object-cover transition-transform duration-500 group-hover:scale-110"
+                                src={image.src}
+                                alt={image.alt}
+                            />
+                            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                        </Link>
+                    </div>
+                ))}
+            </Slider>
         </div>
     );
 };

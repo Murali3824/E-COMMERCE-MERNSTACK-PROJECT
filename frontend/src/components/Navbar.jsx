@@ -111,13 +111,13 @@ const Navbar = () => {
                 <SearchBar isVisible={isSearchVisible} setVisible={setIsSearchVisible} />
 
                 <div className="group relative">
-                    <img onClick={() => token ? null : navigate('/loginsignup')} src={assets.profile_icon} className="w-7 sm:min-w-8 cursor-pointer" alt="Profile" />
+                    <img onClick={() => (token ? null : navigate('/loginsignup'))} src={assets.profile_icon} className="w-7 sm:min-w-8 cursor-pointer transition-transform duration-200 transform hover:scale-110" alt="Profile" />
                     {token && (
-                        <div className='absolute group-hover:block hidden dropdown-menu right-0 pt-4'>
-                            <div className='flex flex-col w-36 bg-white shadow-md rounded'>
-                                <p onClick={() => navigate('/myprofile')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-slate-100 transition-all duration-500'>My Profile</p>
-                                <p onClick={() => navigate('/orders')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-slate-100 transition-all duration-500'>Orders</p>
-                                <p onClick={logout} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 transition-all duration-500'>Logout</p>
+                        <div className='absolute right-[-50px] pt-4 dropdown-menu bg-white  rounded-lg shadow-lg transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:block z-50'>
+                            <div className='flex flex-col w-36'>
+                                <p onClick={() => navigate('/myprofile')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 transition-colors duration-200 rounded-t-lg'>My Profile</p>
+                                <p onClick={() => navigate('/orders')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 transition-colors duration-200'>Orders</p>
+                                <p onClick={logout} className='font-normal cursor-pointer px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors duration-200 rounded-b-lg'>Logout</p>
                             </div>
                         </div>
                     )}
