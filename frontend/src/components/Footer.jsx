@@ -1,6 +1,7 @@
 import React from 'react';
 import { assets } from '../assets/assets';
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaPinterest } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaYoutube, FaPinterest } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -18,7 +19,7 @@ const Footer = () => {
                     <div className="flex gap-4 text-gray-500 text-lg">
                         <Link to="#facebook" className="hover:text-[#088178]"><FaFacebook /></Link>
                         <Link to="#twitter" className="hover:text-[#088178]"><FaTwitter /></Link>
-                        <Link to="#instagram" className="hover:text-[#088178]"><FaInstagram /></Link>
+                        <Link to="#instagram" className="hover:text-[#088178]"><AiFillInstagram /></Link>
                         <Link to="#youtube" className="hover:text-[#088178]"><FaYoutube /></Link>
                         <Link to="#pinterest" className="hover:text-[#088178]"><FaPinterest /></Link>
                     </div>
@@ -52,8 +53,8 @@ const Footer = () => {
                 <div>
                     <p className="text-lg font-medium mb-4">Get in Touch</p>
                     <ul className="space-y-2 text-gray-600">
-                        <li>Phone: +1-234-567-8901</li>
-                        <li>Email: contact@ecommerce.com</li>
+                        <li>Phone : +1-234-567-8901</li>
+                        <li>Email : contact@gmail.com</li>
                     </ul>
                 </div>
             </div>

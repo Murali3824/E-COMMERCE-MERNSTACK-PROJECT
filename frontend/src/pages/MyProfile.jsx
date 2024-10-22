@@ -173,12 +173,12 @@ const MyProfile = () => {
                                     <p className="text-xl font-medium text-gray-700">
                                         {profileData.firstname} {profileData.lastname}
                                     </p>
-                                    <p className="text-gray-500 text-sm">Username</p>
+                                    <p className="text-gray-500 text-sm mt-6">Username</p>
                                 </div>
                                 {/* User's Email */}
-                                <div className="text-center mt-6">
+                                <div className="text-center">
                                     <p className="text-gray-600">
-                                        <span className="font-medium">Email:</span> {formData.email}
+                                        <span className="font-medium">Email:</span> {profileData.email}
                                     </p>
                                 </div>
                             </div>
