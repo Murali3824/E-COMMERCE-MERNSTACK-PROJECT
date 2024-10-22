@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstname: {
+        type: String,
+        required: true,
+    },
+    lastname: {
         type: String,
         required: true,
     },
@@ -14,10 +18,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    avatarUrl: { 
+        type: String 
+    },
     cartData: {
         type: Object,
         default: {},
     },
+    
 }, { minimize: false });
 
 const userModel = mongoose.models.user || mongoose.model('user', userSchema);

@@ -2,6 +2,8 @@ import userModel from "../models/userModel.js";
 import validator from "validator";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
+import {v2 as cloudinary} from "cloudinary"
+
 
 const createToken = (id) => {
     return jwt.sign({id},process.env.JWT_SECRET)
@@ -49,7 +51,7 @@ const loginUser = async (req,res) => {
 // Route for user Register
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { firstname, lastname, email, password } = req.body;
 
         // checking if the user already exists
         const exists = await userModel.findOne({ email });
@@ -80,7 +82,8 @@ const registerUser = async (req, res) => {
 
         // save to DB
         const newUser = new userModel({
-            name,
+            firstname,
+            lastname,
             email, // Correct field name
             password: hashPassword
         });
@@ -117,8 +120,14 @@ const getUserProfile = async (req, res) => {
             });
         }
 
-        // Generate profile avatar based on the user's name using UI Avatars
-        const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=random`;
+        // Check if the user already has a custom avatar saved
+        let avatarUrl = user.avatarUrl; // Assuming avatarUrl is stored in the user schema
+        
+        if (!avatarUrl || avatarUrl.length === 0) {
+            // If no custom avatar is found, generate one using UI Avatars
+            const fullName = `${user.firstname} ${user.lastname}`;
+            avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=random`;
+        }
 
         // Send the user profile details along with the avatar URL as the response
         res.json({
@@ -138,6 +147,40 @@ const getUserProfile = async (req, res) => {
     }
 };
 
+// Update profile controller
+const updateUserProfile = async (req, res) => {
+    try {
+        const { userId, firstname, lastname,email } = req.body;
+        let avatarUrl;
+
+        if (req.file) {
+            console.log('Uploading image to Cloudinary:', req.file.path);
+            const result = await cloudinary.uploader.upload(req.file.path);
+            console.log('Cloudinary result:', result);
+            avatarUrl = result.secure_url;
+            
+        }
+
+        const user = await userModel.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // Update user data
+        if (firstname) user.firstname = firstname;
+        if (lastname) user.lastname = lastname;
+        if (email) user.email = email;
+        if (avatarUrl) user.avatarUrl = avatarUrl; // Update avatar URL
+
+        await user.save();
+
+        // Return updated user data, including the avatar URL
+        res.json({ success: true, user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Server error' });
+    }
+};
 
 // Route for admin login
 const adminLogin = async (req,res) => {
@@ -167,4 +210,4 @@ const adminLogin = async (req,res) => {
 }
 
 
-export {loginUser,registerUser,adminLogin,getUserProfile}
+export {loginUser,registerUser,adminLogin,getUserProfile,updateUserProfile}
