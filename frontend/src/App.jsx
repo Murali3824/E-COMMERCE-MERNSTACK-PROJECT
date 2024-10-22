@@ -23,7 +23,20 @@ import 'slick-carousel/slick/slick-theme.css';
 const App = () => {
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"  
+        autoClose={2000}  
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}  
+        rtl={false}
+        pauseOnFocusLoss={true}  
+        draggable={true}  
+        pauseOnHover={true}  
+        toastClassName="bg-gray-800 text-white font-semibold rounded-lg shadow-lg max-w-[80%] sm:max-w-[400px] mx-auto my-2" 
+        bodyClassName="text-sm p-3"  
+      />
+
       <ScrollToTop />
       <Navbar />
       <Routes>

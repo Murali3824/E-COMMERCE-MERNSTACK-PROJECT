@@ -88,8 +88,8 @@ const Cart = () => {
                             );
                         })
                     ) : (
-                        <div className='flex flex-col items-center justify-center'>
-                            <img className='w-1/6' src={assets.no_product} alt='No items in cart' />
+                        <div className='flex flex-col items-center justify-center py-10'>
+                            <img className='lg:w-1/5 mb-4' src={assets.no_product} alt='No products available' />
                             <p className='text-lg font-medium'>Your cart is empty.</p>
                         </div>
                     )}
@@ -100,7 +100,7 @@ const Cart = () => {
                     <div className='w-full lg:w-[350px] xl:w-[450px]'>
                         <CartTotal />
                         {/* Checkout Button */}
-                        <button onClick={() => navigate('/placeorder')} className='w-full mt-4 bg-black text-white py-3 rounded'>
+                        <button disabled={cartData.length === 0} onClick={() => navigate('/placeorder')} className='w-full mt-4 bg-black cursor-pointer text-white py-3 rounded'>
                             Checkout
                         </button>
                         

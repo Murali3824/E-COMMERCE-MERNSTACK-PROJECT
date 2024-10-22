@@ -276,17 +276,24 @@ const Collection = () => {
                     </div>
 
                     {/* Map Products */}
-                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2 sm:gap-4 gap-y-6'>
-                        {filterProducts.map((item, index) => (
-                            <ProductItem
-                                key={index}
-                                id={item._id}
-                                name={item.name}
-                                image={item.image}
-                                price={item.price}
-                            />
-                        ))}
-                    </div>
+                    {filterProducts.length > 0 ? (
+                        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-2 sm:gap-4 gap-y-6'>
+                            {filterProducts.map((item, index) => (
+                                <ProductItem
+                                    key={index}
+                                    id={item._id}
+                                    name={item.name}
+                                    image={item.image}
+                                    price={item.price}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className='flex flex-col items-center justify-center py-10'>
+                            <img className='lg:w-1/5 mb-4' src={assets.no_product} alt='No products available' />
+                            <p className='text-lg font-medium'>No products found in this collection.</p>
+                        </div>
+                    )}
 
                 </div>
                 

@@ -88,9 +88,9 @@ const Orders = () => {
                             </div>
                         ))
                     ) : (
-                        <div className='flex flex-col items-center justify-center'>
-                            <img className='w-1/6' src={assets.no_product} alt="No Orders" />
-                            <p className="text-lg font-medium">No orders.</p>
+                        <div className='flex flex-col items-center justify-center py-10'>
+                            <img className='lg:w-1/5 mb-4' src={assets.no_product} alt='No products available' />
+                            <p className='text-lg  font-medium'>No orders.</p>
                         </div>
                     )
                 }

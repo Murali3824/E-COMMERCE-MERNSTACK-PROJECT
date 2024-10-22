@@ -8,7 +8,8 @@ const LoginSignup = () => {
     const [currentState, setCurrentState] = useState("Login");
     const { token, setToken, navigate, backendUrl } = useContext(ShopContext);
 
-    const [name, setName] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
@@ -16,7 +17,7 @@ const LoginSignup = () => {
         event.preventDefault();
         try {
             if (currentState === 'Sign Up') {
-                const response = await axios.post(backendUrl + '/api/user/register', { name, email, password });
+                const response = await axios.post(backendUrl + '/api/user/register', { firstname, lastname, email, password });
                 if (response.data.success) {
                     toast.success("Registration successful");
                     setToken(response.data.token);
@@ -47,7 +48,7 @@ const LoginSignup = () => {
     }, [token, navigate]);
 
     return (
-        <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-md m-auto mt-14 gap-6 text-gray-800'>
+        <form onSubmit={onSubmitHandler} className='flex flex-col items-center w-[90%] sm:max-w-md m-auto mt-14 gap-4 lg:gap-6 text-gray-800'>
             {/* Title */}
             <div className='inline-flex items-center gap-2 mb-6 mt-10'>
                 <p className='text-[#222] text-3xl font-semibold'>{currentState}</p>
@@ -55,14 +56,24 @@ const LoginSignup = () => {
 
             {/* Input fields */}
             {currentState === "Sign Up" && (
-                <input 
-                    onChange={(e) => setName(e.target.value)} 
-                    value={name} 
-                    type="text" 
-                    className='w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#088178] transition-all' 
-                    placeholder='Name' 
-                    required 
-                />
+                <div className='flex flex-col w-full gap-4 lg:gap-6'>
+                    <input 
+                        onChange={(e) => setFirstname(e.target.value)} 
+                        value={firstname} 
+                        type="text" 
+                        className='w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#088178] transition-all' 
+                        placeholder='First name' 
+                        required 
+                    />
+                    <input 
+                        onChange={(e) => setLastname(e.target.value)} 
+                        value={lastname} 
+                        type="text" 
+                        className='w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#088178] transition-all' 
+                        placeholder='Last name' 
+                        required 
+                    />
+                </div>
             )}
             <input 
                 onChange={(e) => setEmail(e.target.value)} 
@@ -90,7 +101,7 @@ const LoginSignup = () => {
                     </div>
                 ) : (
                     <div className='flex justify-between gap-10'>
-                        <p className='cursor-pointer text-[#088178] font-normal hover:underline'>Forgot your password?</p>
+                        <p className='cursor-pointer text-[#088178] font-normal hover:underline'>Already have an account?</p>
                         <p onClick={() => setCurrentState('Login')} className='cursor-pointer font-normal text-[#088178] hover:underline'>Login Here</p>
                     </div>
                 )}

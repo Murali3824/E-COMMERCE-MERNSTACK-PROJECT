@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 
 const Hero = () => {
     return (
-        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-screen flex items-center justify-center bg-white">
+        <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] xl:h-screen flex items-center justify-center bg-black">
             {/* Video Element */}
             <video 
                 src={assets.banner_video} // Update this with your video path if different
