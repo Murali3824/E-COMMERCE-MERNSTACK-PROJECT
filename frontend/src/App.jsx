@@ -14,7 +14,7 @@ import Footer from './components/Footer.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify.jsx';
-import MyProfile from './pages/Myprofile.jsx';
+import MyProfile from './pages/MyProfile.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
