@@ -11,7 +11,7 @@ const ShopContextProvider = (props) => {
     const currency = '\u20B9';
     const delivery_fee = 10;
     // backend url
-    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://e-commerce-mernstack-backend.onrender.com";
     const [products,setProducts] = useState([]);
     const [token,setToken] = useState('')
 
