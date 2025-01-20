@@ -6,7 +6,7 @@ const Navbar = ({ setToken }) => {
     return (
         <nav className='bg-white shadow-md'>
             <div className='flex items-center justify-between py-4 px-[4%]'>
-                <Link to='/' className='flex items-center space-x-2'>
+                <Link to='/dashboard' className='flex items-center space-x-2'>
                     <img 
                         className='w-[50px] h-[26px] sm:w-[60px] sm:h-[30px] lg:h-auto lg:w-[75px]' 
                         src={assets.logo} 

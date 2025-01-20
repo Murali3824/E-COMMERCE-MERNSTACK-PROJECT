@@ -30,7 +30,7 @@ const Login = ({ setToken }) => {
 
     return (
         <div className='min-h-screen flex items-center justify-center bg-gray-100'>
-            <div className='bg-white shadow-lg rounded-lg px-8 py-6 max-w-md'>
+            <div className='bg-white shadow-lg rounded-lg px-8 py-6 lg:w-2/6 xl:max-w-md'>
                 <h1 className='text-center text-2xl font-bold mb-6 text-gray-800'>Admin Panel</h1>
                 <form onSubmit={onSubmitHandler}>
                     <div className='mb-4'>
