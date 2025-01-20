@@ -7,8 +7,10 @@ import SearchBar from './SearchBar.jsx';
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
-    const [isSearchVisible, setIsSearchVisible] = useState(false); // State for search visibility
+    const [isSearchVisible, setIsSearchVisible] = useState(false);
+    const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false); // New state for profile menu
     const sidebarRef = useRef(null);
+    const profileMenuRef = useRef(null); // New ref for profile menu
 
     const { getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
 
@@ -17,6 +19,7 @@ const Navbar = () => {
         localStorage.removeItem('token');
         setToken('');
         setCartItems({});
+        setIsProfileMenuOpen(false); // Close menu after logout
     };
 
     const handleScroll = () => {
@@ -28,8 +31,22 @@ const Navbar = () => {
     };
 
     const handleClickOutside = (event) => {
+        // Handle sidebar clicks
         if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
             setVisible(false);
+        }
+        
+        // Handle profile menu clicks
+        if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
+            setIsProfileMenuOpen(false);
+        }
+    };
+
+    const toggleProfileMenu = () => {
+        if (!token) {
+            navigate('/loginsignup');
+        } else {
+            setIsProfileMenuOpen(!isProfileMenuOpen);
         }
     };
 
@@ -57,7 +74,7 @@ const Navbar = () => {
                         <div ref={sidebarRef} className={`fixed top-0 left-0 bottom-0 overflow-hidden bg-white w-[75%] sm:w-[65%] md:w-[50%] rounded-l-lg shadow-lg transition-transform duration-300 ease-in-out transform`}>
                             <div className='flex flex-col text-[#222]'>
                                 <div onClick={() => setVisible(false)} className='m-4 cursor-pointer'>
-                                    <img src={assets.menu_icon} className='bg-gray-100 w-9 border' alt="Close" />
+                                    <img src={assets.cross_icon} className='bg-gray-100 w-6 border' alt="Close" />
                                 </div>
                                 <NavLink onClick={() => setVisible(false)} className='py-4 pl-6 text-lg hover:bg-gray-200 transition-colors' to='/'>HOME</NavLink>
                                 <NavLink onClick={() => setVisible(false)} className='py-4 pl-6 text-lg hover:bg-gray-200 transition-colors' to='/shop'>SHOP</NavLink>
@@ -107,14 +124,40 @@ const Navbar = () => {
                 {/* Search Bar for Small Screens */}
                 <SearchBar isVisible={isSearchVisible} setVisible={setIsSearchVisible} />
 
-                <div className="group relative">
-                    <img onClick={() => (token ? null : navigate('/loginsignup'))} src={assets.profile_icon} className="w-7 sm:min-w-8 cursor-pointer transition-transform duration-200 transform hover:scale-110" alt="Profile" />
-                    {token && (
-                        <div className='absolute right-[-50px] pt-4 dropdown-menu bg-white  rounded-lg shadow-lg transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 group-hover:block z-50'>
+                <div className="relative" ref={profileMenuRef}>
+                    <img 
+                        onClick={toggleProfileMenu}
+                        src={assets.profile_icon} 
+                        className="w-7 sm:min-w-8 cursor-pointer transition-transform duration-200 transform hover:scale-110" 
+                        alt="Profile" 
+                    />
+                    {token && isProfileMenuOpen && (
+                        <div className='absolute right-[-50px] top-full mt-2 bg-white rounded-lg shadow-lg z-50'>
                             <div className='flex flex-col w-36'>
-                                <p onClick={() => navigate('/myprofile')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 transition-colors duration-200 rounded-t-lg'>My Profile</p>
-                                <p onClick={() => navigate('/orders')} className='font-normal cursor-pointer px-4 py-2 text-sm hover:bg-gray-100 transition-colors duration-200'>Orders</p>
-                                <p onClick={logout} className='font-normal cursor-pointer px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors duration-200 rounded-b-lg'>Logout</p>
+                                <button 
+                                    onClick={() => {
+                                        navigate('/myprofile');
+                                        setIsProfileMenuOpen(false);
+                                    }} 
+                                    className='text-left font-normal px-4 py-2 text-sm hover:bg-gray-100 transition-colors duration-200 rounded-t-lg'
+                                >
+                                    My Profile
+                                </button>
+                                <button 
+                                    onClick={() => {
+                                        navigate('/orders');
+                                        setIsProfileMenuOpen(false);
+                                    }} 
+                                    className='text-left font-normal px-4 py-2 text-sm hover:bg-gray-100 transition-colors duration-200'
+                                >
+                                    Orders
+                                </button>
+                                <button 
+                                    onClick={logout} 
+                                    className='text-left font-normal px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors duration-200 rounded-b-lg'
+                                >
+                                    Logout
+                                </button>
                             </div>
                         </div>
                     )}
@@ -124,6 +167,7 @@ const Navbar = () => {
                     <img src={assets.buy_cart} className="w-8 sm:min-w-9" alt="Cart" />
                     <span className="absolute right-1 top-0 sm:top-1 w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[10px]">{getCartCount()}</span>
                 </Link>
+            
             </div>
 
         </div>

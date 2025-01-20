@@ -34,11 +34,11 @@ const Cart = () => {
         <div className='px-4 sm:px-[5vw] md:px-[6vw] lg:px-[7vw] border-t pt-14'>
     
             {/* Free Shipping Banner */}
-            {cartData.length > 0 && (
+            {/* {cartData.length > 0 && (
                 <div className='bg-green-100 p-2 rounded text-green-700 text-center text-sm font-semibold'>
                     Hurray! Free Shipping on this order.
                 </div>
-            )}
+            )} */}
     
             {/* Cart Section */}
             <div className='grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 mt-6'>
